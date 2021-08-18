@@ -10,7 +10,7 @@
                     <div class="cuadricula">
                         <div class="cuadro grande-12 chico-12 cuadro-trabajo">
                             <p>Patólogo anátomo</p>
-                            <p>Valparaiso</p>
+                            <p>Próxima</p>
                             <p> Tepic Nayarit</p>
                             <a>Ver mas</a>
                         </div>
@@ -18,7 +18,7 @@
                         <div class="row"></div>
                         <div class="cuadro grande-12 chico-12 cuadro-trabajo2">
                             <p>Patólogo anátomo</p>
-                            <p>Valparaiso</p>
+                            <p>Próxima</p>
                             <p> Tepic Nayarit</p>
                             <a>Ver mas</a>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="row"></div>
                         <div class="cuadro grande-12 chico-12 cuadro-trabajo3">
                             <p>Patólogo anátomo</p>
-                            <p>Valparaiso</p>
+                            <p>Próxima</p>
                             <p> Tepic Nayarit</p>
                             <a>Ver mas</a>
                         </div>

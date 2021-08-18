@@ -1,12 +1,12 @@
 	<?php wp_footer(); ?>
 	
-		<div class="row footer-valparaiso">
+		<div class="row footer-proxima">
 			<div class=" mancha-empleo">
 				<p>SiGUENOS EN FACEBOOK <a href="<?php echo get_post_type_archive_link( 'valpa_trabajos_pt' ); ?>">@PROXIMA</a></p>
 			</div>
 
 			<div class="row ">
-					<div class="columns grande-12 logo-valparaiso-footer">	
+					<div class="columns grande-12 logo-proxima-footer">	
 						<a href="<?php $url = home_url(); echo $url; ?>"  >
 							<img src="<?php bloginfo('template_url');?>/images/proxima/proxima-logo.svg" />
 						</a>

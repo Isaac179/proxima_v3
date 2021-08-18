@@ -14,8 +14,8 @@
 		if ( $paged >= 2 || $page >= 2 ) echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
 	?></title>
 
-	<meta name="description" content="Te ofrecemos un servicio integral con todo lo necesario para ofrecer un Homenaje funerario a tu ser amado." />
-	<meta name="keywords" content="Funeral,Funeraria,Homenaje,Cremación,in" />
+	<meta name="description" content="Proxima" />
+	<meta name="keywords" content="Startup,Empresas,in" />
 	<meta name="author" content="<?php bloginfo('template_url'); ?>/humans.txt">
 
 	<link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_url'); ?>/images/favicon/apple-icon-57x57.png">
@@ -51,15 +51,15 @@
 	
 	<?php if ( 'valpa_trabajos_pt' == get_post_type() ): $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); ?>
 		
-			<meta property="fb:page_id" content="valparaisofunerales" />
+			<meta property="fb:page_id" content="proxima-startups" />
 			<meta property="og:image" content="<?php echo esc_url($featured_img_url); ?>" />
 			<meta property="og:type" content="article" />
 			<meta property="og:description" content="Ideal para personas con experiencia en <?php $experiencia_previa = get_post_meta( $post->ID,'experiencia_previa_meta', TRUE );echo $experiencia_previa;?>"/>
 			<meta property="og:title" content="Bolsa de trabajo | <?php  echo $post->post_title; ?>"/>
 
 			
-	<?php elseif ( 'valpa_obituario_pt' == get_post_type()  ): ?>
-			<meta property="fb:page_id" content="valparaisofunerales" />
+	<?php elseif ( 'single_trabajo_pt' == get_post_type()  ): ?>
+			<meta property="fb:page_id" content="proxima-startups" />
 			<?php if (has_post_thumbnail( $post->ID ) ): ?>
                 <?php $thumb_id = get_post_thumbnail_id($post->ID); ?>
                 <?php $img_src = wp_get_attachment_image_src($thumb_id, 'thumbnail'); ?>
@@ -70,18 +70,18 @@
            	<?php  endif; ?>	
 			<meta property="og:type" content="article" />
 			<meta property="og:description" content="<?php  echo $post->post_content; ?>  "/>
-			<meta property="og:title" content="Homenaje Memorial | <?php  echo $post->post_title; ?>"/>
+			<meta property="og:title" content="Próxima | <?php  echo $post->post_title; ?>"/>
 
 	<?php else:  ?>
-			<meta property="fb:page_id" content="valparaisofunerales" />
+			<meta property="fb:page_id" content="proxima-startups" />
 			<meta property="og:image" content="" />
-			<meta property="og:description" content="Te ofrecemos un servicio integral con todo lo necesario para ofrecer un Homenaje funerario a tu ser amado."/>
-			<meta property="og:title" content="Homenajes funerarios"/>
+			<meta property="og:description" content="Próxima."/>
+			<meta property="og:title" content="StartUp"/>
 		<?php endif; ?>
 
 	<!-- Google+ Metadata /-->
 	<meta itemprop="name" content="">
-	<meta itemprop="description" content="Te ofrecemos un servicio integral con todo lo necesario para ofrecer un Homenaje funerario a tu ser amado.">
+	<meta itemprop="description" content="Proxima.">
 	<meta itemprop="image" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -107,14 +107,14 @@
 	<div class=" row contenedor-header">
 		<div class="contacto-logo">
 			<a class="contacto-logo href="<?php $url = home_url(); echo $url; ?>"  >
-					<img class="logo-valparaiso" src="<?php bloginfo('template_url');?>/images/proxima/proxima-logo.svg"/>
+					<img class="logo-proxima" src="<?php bloginfo('template_url');?>/images/proxima/proxima-logo.svg"/>
 			</a>	
 		</div>	
 		<div class="row ">
 			<div class=" menu-header">
 
 			<!-- <a class="contacto-logo href="<?php $url = home_url(); echo $url; ?>"  >
-					<img class="logo-valparaiso" src="<?php bloginfo('template_url');?>/images/proxima/proxima-logo.svg"/>
+					<img class="logo-proxima" src="<?php bloginfo('template_url');?>/images/proxima/proxima-logo.svg"/>
 			</a>	 -->
 
 				<?php if( is_home()) :?>
@@ -127,7 +127,7 @@
 
 				<a href="<?php bloginfo('url'); ?>/page-recursos.php">Bolsa de trabajo</a>
 				
-					<!-- <a href="<?php echo get_post_type_archive_link( 'valpa_obituario_pt' ); ?>" class="nosotros-chico">Trabajos</a> -->
+					<!-- <a href="<?php echo get_post_type_archive_link( 'single-trabajos_pt' ); ?>" class="nosotros-chico">Trabajos</a> -->
 				
 				
 				 <?php if( is_home()) : ?>

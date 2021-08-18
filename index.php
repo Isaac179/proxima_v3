@@ -14,7 +14,7 @@
                     <!-- Slides -->
                     <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://www.temporal.sumario.mx/proxima/wp-content/themes/proxima-theme/images/portada-metapath.png);padding: 40px 60px;background-size: cover;"><h1>METAPATH</h1><br><p>Inhumación</p></a>
                     <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://cognicert.com/wp-content/uploads/2021/06/iStock-135018895.jpg);padding: 40px 60px;background-size: cover;"><h1>LAPCIT</h1><p>Patólogo anátomo</p></a>
-                    <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://images.squarespace-cdn.com/content/v1/58d24ae4ff7c508a02bdce8a/1610752979680-XFF5CT2LFPFREL0A5WY8/funeral.png?format=750w);padding: 40px 60px;background-size: cover;"><h1>VALPARAISO</h1><p>Servicios Funerarios</p></a>
+                    <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://images.squarespace-cdn.com/content/v1/58d24ae4ff7c508a02bdce8a/1610752979680-XFF5CT2LFPFREL0A5WY8/funeral.png?format=750w);padding: 40px 60px;background-size: cover;"><h1>PROXIMA</h1><p>Servicios Funerarios</p></a>
                 </div> 
             </div>
             </div>

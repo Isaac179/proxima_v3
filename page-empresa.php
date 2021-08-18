@@ -46,7 +46,7 @@
                     <div class="cuadricula">
                         <div class="cuadro grande-4 chico-12 cuadro-trabajo">
                             <p>Patólogo anátomo</p>
-                            <p>&nbsp;&nbsp;Valparaiso</p>
+                            <p>&nbsp;&nbsp;Próxima</p>
                             &nbsp;&nbsp;<p class="fa fa-map-marker">Tepic Nayarit</p>
                             <br>
                             <a>Ver mas</a>
@@ -54,7 +54,7 @@
 
                         <div class="cuadro grande-4 chico-12 cuadro-trabajo2">
                             <p>Patólogo anátomo</p>
-                            <p>&nbsp;&nbsp;Valparaiso</p>
+                            <p>&nbsp;&nbsp;Próxima</p>
                             &nbsp;&nbsp;<p class="fa fa-map-marker"> Tepic Nayarit</p>
                             <br>
                             <a>Ver mas</a>
@@ -62,7 +62,7 @@
 
                         <div class="cuadro grande-4 chico-12 cuadro-trabajo3">
                             <p>Patólogo anátomo</p>
-                            <p>&nbsp;&nbsp;Valparaiso</p>
+                            <p>&nbsp;&nbsp;Próxima</p>
                             &nbsp;&nbsp;<p class="fa fa-map-marker"> Tepic Nayarit</p>
                             <br>
                             <a>Ver mas</a>
