@@ -285,7 +285,7 @@
 		}
 		
 		
-		.logo-valparaiso{
+		.logo-proxima{
 			display:inline-block;
 			margin-left:20px;
 			width:177px;
@@ -297,7 +297,7 @@
 			-moz-transition: width 0.4s  ease-in-out;
 	    	-ms-transition: width 0.4s ease-in-out ;
 		}
-		.texto-valparaiso{
+		.texto-proxima{
 			opacity: 1;
    			filter: alpha(opacity=100); /* For IE8 and earlier */
 			display:inline-block;
@@ -867,7 +867,7 @@
 		}
 	}
 }
-.footer-valparaiso{
+.footer-proxima{
 	background-color:$color-claro;
 	
 	
@@ -943,7 +943,7 @@
 				font-weight: normal;
 			}
 	}
-	.logo-valparaiso-footer{
+	.logo-proxima-footer{
 		margin-top:50px;
 		@include respond-to(chico){ 
 			margin-top:20px;

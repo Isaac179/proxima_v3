@@ -47,7 +47,7 @@
                            
                            <?php echo get_the_title( $trabajo->ID ); ?><br><br> <!-- Imprime Puesto -->
                            &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa -->
-                           <p class="fa fa-map-marker"> <?php echo get_post_meta( $empresa_relacionada, 'datos_destacado_meta', true ); ?> </p><br><!-- Imprime Ubicacion !falta metabox -->         
+                           <p class="fa fa-map-marker"> <?php echo get_post_meta( $empresa_relacionada, 'datos_destacado_meta', true ); ?> </p><br><!-- Imprime Ubicacion-->         
                            <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
                            
                            <!-- echo "<a href='$link' title='$linktitle'>$linkname</a>"; -->

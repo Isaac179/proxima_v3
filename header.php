@@ -125,8 +125,7 @@
 				
 				<a href="<?php bloginfo('url'); ?>/page-recursos.php">Empresas</a>
 
-				<a href="<?php bloginfo('url'); ?>/page-recursos.php">Bolsa de trabajo</a>
-				
+				<a href="<?php echo get_post_type_archive_link( 'trabajos_pt' ); ?>">Bolsa de trabajo</a>
 					<!-- <a href="<?php echo get_post_type_archive_link( 'single-trabajos_pt' ); ?>" class="nosotros-chico">Trabajos</a> -->
 				
 				
