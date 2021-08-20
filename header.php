@@ -130,12 +130,12 @@
 				
 				
 				 <?php if( is_home()) : ?>
-				 	<a href="#" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Servicios</a>
-				 	<a href="<?php $url = home_url(); echo $url; ?>" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Nosotros</a>
+				 	<a href="<?php bloginfo('url'); ?>/servicios" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Servicios</a>
+				 	<a href="<?php bloginfo('url'); ?>/nosotros" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Nosotros</a>
 					 <!-- <a href="#" data-scroll-nav="nosotros" class="contacto-chico">Nosotros</a> -->
 				<?php else:?>
-					<a href="#" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Servicios</a>
-				 	<a  href="<?php $url = home_url(); echo $url; ?>" class="contacto-chico">Nosotros</a>
+					<a href="<?php bloginfo('url'); ?>/servicios" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Servicios</a>
+				 	<a  href="<?php bloginfo('url'); ?>/nosotros" class="contacto-chico">Nosotros</a>
 				 <?php endif ;?>
 
 				 <?php if( is_home()) : ?>
