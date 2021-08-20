@@ -85,7 +85,7 @@
                             
 						?>
                             <div class="cuadro grande-3 medio-6 chico-12 cuadro-trabajo logo-empresa2">
-                                <a href="#"><?php echo $logo_empresa; ?></a>
+                                <a href="<?php echo get_permalink($empresa->ID); ?>"><?php echo $logo_empresa; ?></a>
                             </div>
                             <?php endforeach;?>             
                     </div>

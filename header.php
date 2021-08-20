@@ -106,7 +106,7 @@
 <div class="header">
 	<div class=" row contenedor-header">
 		<div class="contacto-logo">
-			<a class="contacto-logo href="<?php $url = home_url(); echo $url; ?>"  >
+			<a class="contacto-logo" href="<?php $url = home_url(); echo $url; ?>">
 					<img class="logo-proxima" src="<?php bloginfo('template_url');?>/images/proxima/proxima-logo.svg"/>
 			</a>	
 		</div>	
@@ -118,12 +118,12 @@
 			</a>	 -->
 
 				<?php if( is_home()) :?>
-				 	<a href="#" data-scroll-nav="servicios">Boletín</a>
+				 	<a href="<?php bloginfo('url'); ?>/boletin" data-scroll-nav="servicios">Boletín</a>
 				<?php else:?>
-					<a href="<?php $url = home_url(); echo $url; ?>#servicios">Boletín</a>
+					<a href="<?php bloginfo('url'); ?>/boletin">Boletín</a>
 				<?php endif;?>
 				
-				<a href="<?php bloginfo('url'); ?>/page-recursos.php">Empresas</a>
+				<a href="<?php bloginfo('url'); ?>/empresas2">Empresas</a>
 
 				<a href="<?php echo get_post_type_archive_link( 'trabajos_pt' ); ?>">Bolsa de trabajo</a>
 					<!-- <a href="<?php echo get_post_type_archive_link( 'single-trabajos_pt' ); ?>" class="nosotros-chico">Trabajos</a> -->
@@ -131,11 +131,11 @@
 				
 				 <?php if( is_home()) : ?>
 				 	<a href="#" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Servicios</a>
-				 	<a href="#" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Nosotros</a>
+				 	<a href="<?php $url = home_url(); echo $url; ?>" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Nosotros</a>
 					 <!-- <a href="#" data-scroll-nav="nosotros" class="contacto-chico">Nosotros</a> -->
 				<?php else:?>
 					<a href="#" data-scroll-nav="plan-eliseo" class="desaparece-chico"  class="nosotros-chico">Servicios</a>
-				 	<a  href="<?php $url = home_url(); echo $url; ?>#nosotros" class="contacto-chico">Nosotros</a>
+				 	<a  href="<?php $url = home_url(); echo $url; ?>" class="contacto-chico">Nosotros</a>
 				 <?php endif ;?>
 
 				 <?php if( is_home()) : ?>
