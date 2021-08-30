@@ -37,7 +37,7 @@
 				        $trabajos = get_posts( array(
 				            'post_type' => 'trabajos_pt',
 				            'posts_per_page' => 3,
-				            'orderby' => 'post_date', 
+				            'orderby' => 'parent', 
 				            'order' => 'DESC',
 				        ) );
 				 			
