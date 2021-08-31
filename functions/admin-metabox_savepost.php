@@ -64,6 +64,63 @@ function cltvo_metaboxes(){
 			'empresas_pt',			//post type
 			'side'						//posición
 		);
+		add_meta_box(
+			'documentos_necesarios_mb',		//id
+			'Documentos obligatorios',				//título
+			'documentos_necesarios_mb',		//callback function
+			'trabajos_pt',			//post type
+			'side'						//posición
+		);
+		add_meta_box(
+			'experiencia_previa_mb',		//id
+			'Experiencia previa',				//título
+			'experiencia_previa_mb',		//callback function
+			'trabajos_pt',			//post type
+			'normal'						//posición
+		);
+		add_meta_box(
+			'informacion_puesto_mb',		//id
+			'Información del Puesto',				//título
+			'info_puesto_fc',		//callback function
+			'trabajos_pt',			//post type
+			'normal'						//posición
+		);
+		add_meta_box(
+			'tareas_puesto_mb',		//id
+			'Tareas del Puesto',				//título
+			'tareas_puesto_mb',		//callback function
+			'trabajos_pt',			//post type
+			'normal'						//posición
+		);
+		add_meta_box(
+			'preguntas_puesto_mb',		//id
+			'Cuestionario',				//título
+			'preguntas_puesto_mb',		//callback function
+			'trabajos_pt',			//post type
+			'normal'						//posición
+		);
+	 
+		add_meta_box(
+			'configuracion_pregunta_mb',		//id
+			'Configuracion pregunta',				//título
+			'configuracion_pregunta_mb',		//callback function
+			'preguntas_pt',			//post type
+			'normal'						//posición
+		);
+		add_meta_box(
+			'solicitud_codigo_mb',		//id
+			'Codigo de solicitud',				//título
+			'solicitud_codigo_mb',		//callback function
+			'post',			//post type
+			'side'						//posición
+		);
+		add_meta_box(
+			'folio_global_mb',		//id
+			'Folio de  solicitud',				//título
+			'folio_global_mb',		//callback function
+			'post',			//post type
+			'side'						//posición
+		);
 	 	
 	
 }

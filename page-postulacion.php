@@ -74,7 +74,7 @@ if (!isset($_GET['puesto'])) {
                         </div>
 
 
-                       <div class="row formulario-seccion">
+                       <!-- <div class="row formulario-seccion">
                             <h3 for="sucursales_relacionadas">2. Verifica la sucursal de postulación</h3>
                             <div id="formulario-2" <?php if ($id_sucursal_get == 0 ) echo 'style="display: none;"'; ?>>
                                 <?php 
@@ -238,7 +238,7 @@ if (!isset($_GET['puesto'])) {
                                         <input type="text" id="cont_referencia3telefono_JS" value=""  name="contact-form_JS[Referencia3telefono]" form="contact-form_JS" required="" placeholder="Teléfono de contacto">
                                     </div>  
                                 </div>    
-                        </div>                                           
+                        </div>                                            -->
                         <div class="row formulario-seccion">                                 
                             <h3 for="puesto_postulante">5. Cuestionario</h3>
                             <div class="formulario-3" <?php if ($id_sucursal_get == 0 ) echo 'style="display: none;"'; ?>>

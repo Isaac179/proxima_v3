@@ -32,7 +32,7 @@
 
 
 /*--------------------- datos del correo -------------------------------------*/
-define('mail', 'danielalmeida@gmail.com'); //  mail de la prestadora de servicios 
+define('mail', 'fablabtoluca@gmail.com'); //  mail de la prestadora de servicios 
 
 
 /*-------------------- es necesario repetir y modificar las siguientes lineas para cada form que contenga la pagina ------------*/
@@ -54,7 +54,7 @@ if (isset($_POST[$id_form])) {
         define('reg_celular', $_POST[$id_form]['celular']);
 
         /*--------------------- contenido del correo -------------------------------------*/
-        define('primera_linea', 'Contacto Valparaiso'); // cambiar el primera linea del contenido del correo
+        define('primera_linea', 'Contacto Proxima'); // cambiar el primera linea del contenido del correo
         
         /*----------------------uso de mail chimp----------------------------------------*/
         define('mailchip', false); // cambiar a true en caso de uso del mailchimp
@@ -73,7 +73,7 @@ if (isset($_POST[$id_form])) {
             }
             define('mailchip_errors_send', false); // cambiar a true en caso de que quieras reporte de errores de mailchimp por mail
             if (mailchip_errors_send == true) {
-                define('mail_errors_send', 'danielalmeida.mx@gmail.com'); // cambiar correo donde se envían los errores del mailchimp
+                define('mail_errors_send', 'fablabtoluca@gmail.com'); // cambiar correo donde se envían los errores del mailchimp
             }
         }
     }

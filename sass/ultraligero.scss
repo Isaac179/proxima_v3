@@ -245,11 +245,11 @@
 	}
 }
 .header{
-	display: flex;
+	display: flexbox;
     justify-content: space-between;
 	z-index:110;
 	position:fixed;
-	width:100%;
+	width:99.2%;
 	top:0px;
 	transition: all 0.4s ease-in-out;
 	-webkit-transition: all 0.4s ease-in-out;
