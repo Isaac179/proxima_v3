@@ -1,54 +1,86 @@
 <?php get_header(); ?> 
+
+
+
+<style type="text/css">
+
+			
+			ul, ol {
+        z-index:120;
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:left;
+        
+			}
+			
+			.nav li a {
+				background-color:#000;
+				color:#fff;
+				text-decoration:none;
+				padding:10px 12px;
+				display:block;
+			}
+			
+			.nav li a:hover {
+				background-color:#434343;
+			}
+			
+			.nav li ul {
+				display:none;
+				position:absolute;
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:relative;
+			}
+			
+			.nav li ul li ul {
+				right:-140px;
+				top:0px;
+			}
+			
+		</style>
+
+
+
+
+
+
 <div class="row cuerpo" id="inicio" >
 <div class="row seccion-pagina">
         <div class="cuadricula">
-<!--SELECT EMPRESA-->
-<select name="empresa" id="empresa">
-	<option>EMPRESA</option>
+            <!-- <div class="cuadro grande-1 medio-2 chico-12">
+                <span>Vacantes</span>
+            </div> -->
 
-                    <?php 				
-				        $empresas = get_posts( array(
-				            'post_type' => 'empresas_pt',
-				            'posts_per_page' => -1,				            
-				            'order' => 'ASC',
-				        	) );
-				        foreach ( $empresas as $empresa ):
-								 							         
-					?>
-								<option>
-									<?php echo get_the_title( $empresa->ID); ?>
-								</option>
-                        <?php endforeach;?>
-</select>
+<div id="header">
+			<ul class="nav">
+				<li><a href="">Empresa:</a>
+					<ul>
+						<li><a href="">Valparaiso</a></li>
+						<li><a href="">Metapath</a></li>
+						<li><a href="">Lapcit</a></li>
+						<li><a href="">Columba</a></li>
+            <li><a href="">Cencal</a></li>
+					</ul>
+				</li>
 
-<!--SELECT CIUDAD-->
-<select name="ciudad" id="ciudad">
-	<option>CIUDAD</option>
-
-					<?php 				
-				        $sucursales = get_posts( array(
-				            'post_type' => 'sucursales_pt',
-				            'posts_per_page' => -1,				            
-				            'order' => 'ASC',
-				        	) ); 
-
-							// dd($sucursales);
-							
-						foreach ( $sucursales as $sucursal ):
-
-					?>
-								<option>
-									<?php echo get_the_title( $sucursal->ID);?>
-								</option>
-						<?php endforeach;?>
-														 							         
-</select>
-
+			</ul>
+		</div>
+  <?php $select='19276' ?>
 
 <!-- <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
   <input type="text" placeholder="Search.." name="search2">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form> -->
+
 
             <div class="cuadro medio-12 grande-12 chico-12 slider-home">
                 <?php 
@@ -57,36 +89,36 @@
 				            'post_type' => 'trabajos_pt',
 				            'posts_per_page' => -1,
 				            'orderby' => 'post_date', 
-				            'order' => 'DESC',
+				            'order' => 'ASC',
 				        ) );
 
-						$sucursales = get_posts( array(
-				            'post_type' => 'sucursales_pt',
-				            'posts_per_page' => -1,
-				            'orderby' => 'post_date', 
-				            'order' => 'DESC',
-				        ) );
-
-						echo $sucursal_relacionada = get_post_meta( $sucursal->ID, 'sucursal_relacionada_meta', true );
-
+                
 				        foreach ( $trabajos as $trabajo ):
-								 $empresa_relacionada = get_post_meta( $trabajo->ID, 'empresa_relacionada_meta', true );
+								$empresa_relacionada = get_post_meta( $trabajo->ID, 'empresa_relacionada_meta', true );
                                  $empresa_relacionada = $empresa_relacionada[0];
-								 $nom = get_the_title( $empresa_relacionada);  
-       
+                                 
+                               
+                                 
 						?>
+
+            <?php
+            if ($empresa_relacionada ==$select):
+             ?>
 
                           <div class="cuadro medio-6 grande-12 chico-12 slider-home cuadro-trabajo" style="margin-bottom: 20px;border-bottom: 20px solid 
                            <?php echo get_post_meta( $empresa_relacionada, 'color_destacado_meta', true ); ?>;"> <!-- Color Estilo -->
                            
                            <b><?php echo get_the_title( $trabajo->ID ); ?></b><br><br> <!-- Imprime Puesto -->
-                           &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa --> 
+                           &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa -->
                            <p class="fa fa-map-marker"> <?php echo get_post_meta( $empresa_relacionada, 'datos_destacado_meta', true ); ?> </p><br><!-- Imprime Ubicacion-->         
                            <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
                            
                            <!-- echo "<a href='$link' title='$linktitle'>$linkname</a>"; -->     
                           </div>
-						  
+
+     
+                <?php endif;?>
+                
                 <?php endforeach;?>
                 <div class="row">
                     <br><br>

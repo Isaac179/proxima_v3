@@ -18,6 +18,7 @@ html{font-size: $base-px;}
 html, body {height: 100%;}
 
 body {
+	// display: none;
 	position: relative;
 	font-family: $fuente-sans;
 	text-rendering: optimizeLegibility;  // mejor legibilidad

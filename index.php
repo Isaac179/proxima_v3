@@ -12,9 +12,9 @@
                 <?php $nostros = get_page_by_title('nosotros');?>
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-                    <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://www.temporal.sumario.mx/proxima/wp-content/themes/proxima-theme/images/portada-metapath.png);padding: 40px 60px;background-size: cover;"><h1>METAPATH</h1><br><p>Inhumación</p></a>
-                    <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://cognicert.com/wp-content/uploads/2021/06/iStock-135018895.jpg);padding: 40px 60px;background-size: cover;"><h1>LAPCIT</h1><p>Patólogo anátomo</p></a>
-                    <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://images.squarespace-cdn.com/content/v1/58d24ae4ff7c508a02bdce8a/1610752979680-XFF5CT2LFPFREL0A5WY8/funeral.png?format=750w);padding: 40px 60px;background-size: cover;"><h1>PROXIMA</h1><p>Servicios Funerarios</p></a>
+                    <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(http://www.temporal.sumario.mx/proxima/wp-content/uploads/2021/09/portada-metapath.png);padding: 40px 60px;background-size: cover;"></a>
+                    <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://cognicert.com/wp-content/uploads/2021/06/iStock-135018895.jpg);padding: 40px 60px;background-size: cover;"></a>
+                    <a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://images.squarespace-cdn.com/content/v1/58d24ae4ff7c508a02bdce8a/1610752979680-XFF5CT2LFPFREL0A5WY8/funeral.png?format=750w);padding: 40px 60px;background-size: cover;"></a>
                 </div> 
             </div>
             </div>
@@ -27,25 +27,42 @@
                 <span>Vacantes</span>
             </div>
             <div class="cuadro medio-10 grande-11 chico-12 slider-home">
-                <?php 
-						
-				        $trabajos = get_posts( array(
-				            'post_type' => 'trabajos_pt',
-				            'posts_per_page' => 3,
-				            'orderby' => 'post_date', 
-				            'order' => 'DESC',
-				        ) );
+
+        
+				        
+                        
+            
+                            
+                        
+
+<?php
+                            $trabajos = get_posts( array(
+                                'post_type' => 'trabajos_pt',
+                                'posts_per_page' => 3,
+                                'orderby' => 'post_date', 
+                                'order' => 'DESC',
+                            ) );
+
+                            $sucursales = get_posts( array(
+                                'post_type' => 'sucursales_pt',
+                                'posts_per_page' => 3,
+                                'orderby' => 'post_date', 
+                                'order' => 'DESC',
+                            ) );
+                                    
+                            
 				 			
 				            foreach ( $trabajos as $trabajo ):
-								$empresa_relacionada = get_post_meta( $trabajo->ID, 'empresa_relacionada_meta', true );
+								 $empresa_relacionada = get_post_meta( $trabajo->ID, 'empresa_relacionada_meta', true );
                                  $empresa_relacionada = $empresa_relacionada[0];
-                            
-						?>
+
+         
+		    ?>
 
                 <div class="cuadro grande-4 chico-12 cuadro-trabajo" style="border-bottom: 20px solid 
                            <?php echo get_post_meta( $empresa_relacionada, 'color_destacado_meta', true ); ?>;"> <!-- Color Estilo -->
                            
-                           <?php echo get_the_title( $trabajo->ID ); ?><br><br> <!-- Imprime Puesto -->
+                           <b><?php echo get_the_title( $trabajo->ID ); ?></b><br><br> <!-- Imprime Puesto -->
                            &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa -->
                            <p class="fa fa-map-marker"> <?php echo get_post_meta( $empresa_relacionada, 'datos_destacado_meta', true ); ?> </p><br><!-- Imprime Ubicacion-->         
                            <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
@@ -53,7 +70,13 @@
                            <!-- echo "<a href='$link' title='$linktitle'>$linkname</a>"; -->
                                
                 </div>
+
+            
                 <?php endforeach;?>
+                
+
+                
+                
                 <div class="row">
                     <br><br>
                         <a href="<?php echo get_post_type_archive_link( 'trabajos_pt' ) ?> ">Ver todas las ofertas de trabajo ></a>
@@ -139,5 +162,6 @@
 
 						
 </div>
+
 
 <?php get_footer(); ?>

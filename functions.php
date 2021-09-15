@@ -154,3 +154,176 @@ include_once('functions/theme-functions.php');
 
 
 ?>
+
+
+<?php
+/**
+* WP AJAX Call Frontend
+*/
+
+//Load jQuery
+wp_enqueue_script('jquery');
+
+//Define AJAX URL
+function myplugin_ajaxurl() {
+
+   echo '<script type="text/javascript">
+           var ajaxurl = "' . admin_url('admin-ajax.php') . '";
+         </script>';
+}
+add_action('wp_head', 'myplugin_ajaxurl');
+
+//The Javascript
+function add_this_script_footer(){ ?>
+<script>
+jQuery(document).ready(function($) {
+    // This is the variable we are passing via AJAX
+    var selecta = 'Valparaiso';
+    // This does the ajax request (The Call).
+
+    $( ".valparaiso" ).click(function() {
+      $.ajax({
+          url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
+          data: {
+              'action':'example_ajax_request', // This is our PHP function below
+              'selecta' : selecta // This is the variable we are sending via AJAX
+          },
+          success:function(data) {
+      // This outputs the result of the ajax request (The Callback)
+              $(".valparaiso").text(data);
+          },
+          error: function(errorThrown){
+              window.alert(errorThrown);
+          }
+      });
+    });
+});
+
+
+jQuery(document).ready(function($) {
+    // This is the variable we are passing via AJAX
+    var selecta = 'Columba';
+    // This does the ajax request (The Call).
+
+    $( ".columba" ).click(function() {
+      $.ajax({
+          url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
+          data: {
+              'action':'example_ajax_request', // This is our PHP function below
+              'selecta' : selecta // This is the variable we are sending via AJAX
+          },
+          success:function(data) {
+      // This outputs the result of the ajax request (The Callback)
+              $(".columba").text(data);
+          },
+          error: function(errorThrown){
+              window.alert(errorThrown);
+          }
+      });
+    });
+});
+
+jQuery(document).ready(function($) {
+    // This is the variable we are passing via AJAX
+    var selecta = 'Metapath';
+    // This does the ajax request (The Call).
+
+    $( ".metapath" ).click(function() {
+      $.ajax({
+          url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
+          data: {
+              'action':'example_ajax_request', // This is our PHP function below
+              'selecta' : selecta // This is the variable we are sending via AJAX
+          },
+          success:function(data) {
+      // This outputs the result of the ajax request (The Callback)
+              $(".metapath").text(data);
+          },
+          error: function(errorThrown){
+              window.alert(errorThrown);
+          }
+      });
+    });
+});
+
+jQuery(document).ready(function($) {
+    // This is the variable we are passing via AJAX
+    var selecta = 'Lapcit';
+    // This does the ajax request (The Call).
+
+    $( ".lapcit" ).click(function() {
+      $.ajax({
+          url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
+          data: {
+              'action':'example_ajax_request', // This is our PHP function below
+              'selecta' : selecta // This is the variable we are sending via AJAX
+          },
+          success:function(data) {
+      // This outputs the result of the ajax request (The Callback)
+              $(".lapcit").text(data);
+          },
+          error: function(errorThrown){
+              window.alert(errorThrown);
+          }
+      });
+    });
+});
+
+jQuery(document).ready(function($) {
+    // This is the variable we are passing via AJAX
+    var selecta = 'Cencal';
+    // This does the ajax request (The Call).
+
+    $( ".cencal" ).click(function() {
+      $.ajax({
+          url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
+          data: {
+              'action':'example_ajax_request', // This is our PHP function below
+              'selecta' : selecta // This is the variable we are sending via AJAX
+          },
+          success:function(data) {
+      // This outputs the result of the ajax request (The Callback)
+              $(".cencal").text(data);
+          },
+          error: function(errorThrown){
+              window.alert(errorThrown);
+          }
+      });
+    });
+});
+
+
+</script>
+<?php }
+add_action('wp_footer', 'add_this_script_footer');
+
+//The PHP
+function example_ajax_request() {
+    // The $_REQUEST contains all the data sent via AJAX from the Javascript call
+    if ( isset($_REQUEST) ) {
+        $selecta = $_REQUEST['selecta'];
+        // This bit is going to process our selecta variable into an Apple
+        if ( $selecta == 'valparaiso' ) {
+            $selecta = 'empresa1';
+        }
+		if ( $selecta == 'metapath' ) {
+            $selecta = 'empresa2';
+        }
+		if ( $selecta == 'lapcit' ) {
+            $selecta = 'empresa3';
+        }
+		if ( $selecta == 'columba' ) {
+            $selecta = 'empresa4';
+        }
+		if ( $selecta == 'cencal' ) {
+            $selecta = 'empresa5';
+        }
+        // Now let's return the result to the Javascript function (The Callback)
+        echo $selecta;
+    }
+    // Always die in functions echoing AJAX content
+   die();
+}
+// This bit is a special action hook that works with the WordPress AJAX functionality.
+add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
+add_action( 'wp_ajax_nopriv_example_ajax_request', 'example_ajax_request' ); 

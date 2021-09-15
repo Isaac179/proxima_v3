@@ -88,6 +88,8 @@
 
 	<link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" type="text/css" />
 
+	
+
 	<?php wp_head(); ?>
 	<?php include_once('inc/analytics.php'); ?>
 </head>
@@ -104,7 +106,7 @@
 	</div>	
 </div>
 <div class="header">
-	<div class=" row contenedor-header">
+	<div class="row contenedor-header">
 		<div class="contacto-logo">
 			<a class="contacto-logo" href="<?php $url = home_url(); echo $url; ?>">
 					<img class="logo-proxima" src="<?php bloginfo('template_url');?>/images/proxima/proxima-logo.svg"/>

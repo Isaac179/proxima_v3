@@ -34,11 +34,19 @@ function cltvo_metaboxes(){
 			array('trabajos_pt','sucursales_pt'),			//post type
 			'side'						//posición
 		);
+
+		add_meta_box(
+			'sucursal_relacionada_mb',		//id
+			'Sucursal relacionada',				//título
+			'sucursal_relacionada_mb',		//callback function
+			array('trabajos_pt'),			//post type
+			'side'						//posición
+		);
 		add_meta_box(
 			'datos_sucursal_mb',		//id
 			'Datos Sucursal',				//título
 			'datos_sucursal_mb',		//callback function
-			array('trabajos_pt','sucursales_pt'),			//post type
+			array('sucursales_pt'),			//post type
 			//'side'						//posición
 		);
 		add_meta_box(
@@ -57,70 +65,70 @@ function cltvo_metaboxes(){
 									//posición
 		);
 
-		add_meta_box(
-			'datos_destacado_mb',		//id
-			'Ubicación',				//título
-			'datos_destacado_mb',		//callback function
-			'empresas_pt',			//post type
-			'side'						//posición
-		);
-		add_meta_box(
-			'documentos_necesarios_mb',		//id
-			'Documentos obligatorios',				//título
-			'documentos_necesarios_mb',		//callback function
-			'trabajos_pt',			//post type
-			'side'						//posición
-		);
-		add_meta_box(
-			'experiencia_previa_mb',		//id
-			'Experiencia previa',				//título
-			'experiencia_previa_mb',		//callback function
-			'trabajos_pt',			//post type
-			'normal'						//posición
-		);
-		add_meta_box(
-			'informacion_puesto_mb',		//id
-			'Información del Puesto',				//título
-			'info_puesto_fc',		//callback function
-			'trabajos_pt',			//post type
-			'normal'						//posición
-		);
-		add_meta_box(
-			'tareas_puesto_mb',		//id
-			'Tareas del Puesto',				//título
-			'tareas_puesto_mb',		//callback function
-			'trabajos_pt',			//post type
-			'normal'						//posición
-		);
-		add_meta_box(
-			'preguntas_puesto_mb',		//id
-			'Cuestionario',				//título
-			'preguntas_puesto_mb',		//callback function
-			'trabajos_pt',			//post type
-			'normal'						//posición
-		);
+		// add_meta_box(
+		// 	'datos_destacado_mb',		//id
+		// 	'Ubicación',				//título
+		// 	'datos_destacado_mb',		//callback function
+		// 	'sucursales_pt',			//post type
+		// 	'side'						//posición
+		// );
+		// add_meta_box(
+		// 	'documentos_necesarios_mb',		//id
+		// 	'Documentos obligatorios',				//título
+		// 	'documentos_necesarios_mb',		//callback function
+		// 	'trabajos_pt',			//post type
+		// 	'side'						//posición
+		// );
+		// add_meta_box(
+		// 	'experiencia_previa_mb',		//id
+		// 	'Experiencia previa',				//título
+		// 	'experiencia_previa_mb',		//callback function
+		// 	'trabajos_pt',			//post type
+		// 	'normal'						//posición
+		// );
+		// add_meta_box(
+		// 	'informacion_puesto_mb',		//id
+		// 	'Información del Puesto',				//título
+		// 	'info_puesto_fc',		//callback function
+		// 	'trabajos_pt',			//post type
+		// 	'normal'						//posición
+		// );
+		// add_meta_box(
+		// 	'tareas_puesto_mb',		//id
+		// 	'Tareas del Puesto',				//título
+		// 	'tareas_puesto_mb',		//callback function
+		// 	'trabajos_pt',			//post type
+		// 	'normal'						//posición
+		// );
+		// add_meta_box(
+		// 	'preguntas_puesto_mb',		//id
+		// 	'Cuestionario',				//título
+		// 	'preguntas_puesto_mb',		//callback function
+		// 	'trabajos_pt',			//post type
+		// 	'normal'						//posición
+		// );
 	 
-		add_meta_box(
-			'configuracion_pregunta_mb',		//id
-			'Configuracion pregunta',				//título
-			'configuracion_pregunta_mb',		//callback function
-			'preguntas_pt',			//post type
-			'normal'						//posición
-		);
-		add_meta_box(
-			'solicitud_codigo_mb',		//id
-			'Codigo de solicitud',				//título
-			'solicitud_codigo_mb',		//callback function
-			'post',			//post type
-			'side'						//posición
-		);
-		add_meta_box(
-			'folio_global_mb',		//id
-			'Folio de  solicitud',				//título
-			'folio_global_mb',		//callback function
-			'post',			//post type
-			'side'						//posición
-		);
+		// add_meta_box(
+		// 	'configuracion_pregunta_mb',		//id
+		// 	'Configuracion pregunta',				//título
+		// 	'configuracion_pregunta_mb',		//callback function
+		// 	'preguntas_pt',			//post type
+		// 	'normal'						//posición
+		// );
+		// add_meta_box(
+		// 	'solicitud_codigo_mb',		//id
+		// 	'Codigo de solicitud',				//título
+		// 	'solicitud_codigo_mb',		//callback function
+		// 	'post',			//post type
+		// 	'side'						//posición
+		// );
+		// add_meta_box(
+		// 	'folio_global_mb',		//id
+		// 	'Folio de  solicitud',				//título
+		// 	'folio_global_mb',		//callback function
+		// 	'post',			//post type
+		// 	'side'						//posición
+		// );
 	 	
 	
 }
@@ -173,6 +181,53 @@ function empresa_relacionada_mb($object) {
 
         <p>
             <input  type="checkbox" name="empresa_relacionada_in[]" value="<?php echo $id;?>" <?php echo $checked; ?> />
+            <?php echo $element;?>
+        </p>
+
+        <?php
+    }
+	
+
+}
+
+function sucursal_relacionada_mb($object) {
+	
+	$args = array( 
+		'post_status' => get_post_stati(),
+		'posts_per_page' => -1,
+		'post_type'        => 'sucursales_pt',
+		'order_by' => 'post_title',
+		'order'=>'ASC'
+	);
+
+
+	$empresas = get_posts( $args );
+
+	 wp_nonce_field( basename(__FILE__), 'mam_nonce' );
+
+    // How to use 'get_post_meta()' for multiple checkboxes as array?
+    $postmeta = maybe_unserialize( get_post_meta( $object->ID, 'sucursal_relacionada_meta', true ) );
+
+    // Our associative array here. id = value
+    $empresa_relacionada_meta = array();
+
+	foreach ( $empresas as $empresa ) :
+		$empresa_relacionada_meta[$empresa->ID] = $empresa->post_title ;
+	endforeach; 
+    // Loop through array and make a checkbox for each element
+    foreach ( $empresa_relacionada_meta as $id => $element) {
+
+        // If the postmeta for checkboxes exist and 
+        // this element is part of saved meta check it.
+        if ( is_array( $postmeta ) && in_array( $id, $postmeta ) ) {
+            $checked = 'checked="checked"';
+        } else {
+            $checked = null;
+        }
+        ?>
+
+        <p>
+            <input  type="checkbox" name="sucursal_relacionada_in[]" value="<?php echo $id;?>" <?php echo $checked; ?> />
             <?php echo $element;?>
         </p>
 
@@ -259,35 +314,37 @@ function datos_destacado_mb($object){
 }
 
 function datos_sucursal_mb($object){
-	echo '<p><label>Coordenadas Latitu:</label></p>';
-	echo '<input style="width:100%" name="datos_sucursal_in" placeholder="19.284719816340484" type="text" value="';
-	echo get_post_meta($object->ID, 'datos_sucursal_meta', true);
+
+	echo '<p><label>Ciudad:</label></p>';
+	echo '<input style="width:100%" name="datos_sucursal_in_ciudad" placeholder="CDMX" type="text" value="';
+	echo get_post_meta($object->ID, 'datos_sucursal_meta_ciudad', true);
 	echo '" />';
 
-	echo '<p><label>Coordenadas Longitud:</label></p>';
-	echo '<input style="width:100%" name="datos_sucursal_in" placeholder="99.6411811706151" type="text" value="';
-	echo get_post_meta($object->ID, 'datos_sucursal_meta', true);
-	echo '" />';
+	 echo '<p><label>Coordenadas Latitud:</label></p>';
+	 echo '<input style="width:100%" name="datos_sucursal_in_latidud" placeholder="19.284719816340484" type="text" value="';
+	 echo get_post_meta($object->ID, 'datos_sucursal_meta_latidud', true);
+	 echo '" />';
 
-	echo '<p><label>Calle:</label></p>';
-	echo '<input style="width:100%" name="datos_sucursal_in" placeholder="Amazonas" type="text" value="';
-	echo get_post_meta($object->ID, 'datos_sucursal_meta', true);
-	echo '" />';
+	 echo '<p><label>Coordenadas Longitud:</label></p>';
+	 echo '<input style="width:100%" name="datos_sucursal_in_longitud" placeholder="99.6411811706151" type="text" value="';
+	 echo get_post_meta($object->ID, 'datos_sucursal_meta_longitud', true);
+	 echo '" />';
 
-	echo '<p><label>Codigo postal:</label></p>';
-	echo '<input style="width:100%" name="datos_sucursal_in" placeholder="50170" type="text" value="';
-	echo get_post_meta($object->ID, 'datos_sucursal_meta', true);
-	echo '" />';
+	 echo '<p><label>Calle:</label></p>';
+	 echo '<input style="width:100%" name="datos_sucursal_in_calle" placeholder="Amazonas" type="text" value="';
+	 echo get_post_meta($object->ID, 'datos_sucursal_meta_calle', true);
+	 echo '" />';
 
-	echo '<p><label>Teléfono:</label></p>';
-	echo '<input style="width:100%" name="datos_sucursal_in" placeholder="(722) 437-83-88" type="text" value="';
-	echo get_post_meta($object->ID, 'datos_sucursal_meta', true);
-	echo '" />';
+	 echo '<p><label>Codigo postal:</label></p>';
+	 echo '<input style="width:100%" name="datos_sucursal_in_cp" placeholder="50170" type="text" value="';
+	 echo get_post_meta($object->ID, 'datos_sucursal_meta_cp', true);
+	 echo '" />';
 
-	echo '<p><label>Facebook:</label></p>';
-	echo '<input style="width:100%" name="datos_sucursal_in" placeholder="https://www.facebook.com/valparaisofunerales" type="text" value="';
-	echo get_post_meta($object->ID, 'datos_sucursal_meta', true);
-	echo '" />';
+	 echo '<p><label>Teléfono:</label></p>';
+	 echo '<input style="width:100%" name="datos_sucursal_in_tel" placeholder="(722) 437-83-88" type="text" value="';
+	 echo get_post_meta($object->ID, 'datos_sucursal_meta_tel', true);
+	 echo '" />';
+
 }
 function crdmn_equipo_fc($object){?>
 	<div class="cltvo_multi_mb">
@@ -345,9 +402,59 @@ function cltvo_save_post($id){
 
 	// ---------------------- funciones interiores del save ---------------------- 
 
+// Save the meta value as one multi dimensional array, like below
+// $datos_meta_sucursal = array(
+// 	array(
+// 		'ciudad' => 'Toluca',
+// 		'latitud' => '19.284765384185633',
+// 		'longitud' => '-99.64113825497749',
+// 		'calle' => 'Nezahualcóyotl 503',
+// 		'cp' => '50090',
+// 		'telefono' => '7224378389',
+// 	),
+// 	array(
+// 		'title' => 'New name here',
+// 		'url' => 'http://example.com',
+// 		'description' => 'New description here...'
+// 	)
+//  );
+ 
+//  // Save it using either update_post_meta() or add_post_meta()
+//  update_post_meta( $post_id, 'datos_meta_sucursa', $datos_meta_sucursa );
+
+//  // Reference it or get it like below later on:
+//  $datos_meta_sucursa = get_post_meta( $post_id, 'photo_data', true );
+ 
+//  // Get the values like below...
+//  echo $datos_meta_sucursaa[0]['ciudad'];
+//  echo $datos_meta_sucursa[0]['latitud'];
+//  echo $datos_meta_sucursa[0]['longitud'];
+//  echo $datos_meta_sucursa[0]['calle'];
+//  echo $datos_meta_sucursa[0]['cp'];
+//  echo $datos_meta_sucursa[0]['telefono'];
+
+
+
+// $sucursal_datos = Array(
+// 	'datos_sucursal_meta' => $this->ciudad,
+// 	'datos_sucursal_meta2' => $this->latitud,
+// 	'datos_sucursal_meta3' => $this->longitud,
+// 	'datos_sucursal_meta4' => $this->calle,
+// 	'datos_sucursal_meta5' => $this->cp,
+// 	'datos_sucursal_meta6' =>$this->telefono,
+// 	);
+	
+// //Update inserts a new entry if it doesn't exist, updates otherwise
+// update_post_meta($post_ID, 'sucursal_datos', $sucursal_datos);
+
+
+
 	
 	if( isset( $_POST[ 'empresa_relacionada_in' ] ) ) {
 	    update_post_meta( $id, 'empresa_relacionada_meta', $_POST[ 'empresa_relacionada_in' ] );
+	}
+	if( isset( $_POST[ 'sucursal_relacionada_in' ] ) ) {
+	    update_post_meta( $id, 'sucursal_relacionada_meta', $_POST[ 'sucursal_relacionada_in' ] );
 	}
 	if( isset( $_POST[ 'color_destacado_in' ] ) ) {
 	    update_post_meta( $id, 'color_destacado_meta', $_POST[ 'color_destacado_in' ] );
@@ -358,8 +465,26 @@ function cltvo_save_post($id){
 	if( isset( $_POST[ 'datos_destacado_in' ] ) ) {
 	    update_post_meta( $id, 'datos_destacado_meta', $_POST[ 'datos_destacado_in' ] );
 	}
-	if( isset( $_POST[ 'datos_sucursal_in' ] ) ) {
-	    update_post_meta( $id, 'datos_sucursal_meta', $_POST[ 'datos_sucursal_in' ] );
+	if( isset( $_POST[ 'datos_destacado_in' ] ) ) {
+	    update_post_meta( $id, 'datos_destacado_meta', $_POST[ 'datos_destacado_in' ] );
+	}
+	if( isset( $_POST[ 'datos_sucursal_in_ciudad' ] ) ) {
+	    update_post_meta( $id, 'datos_sucursal_meta_ciudad', $_POST[ 'datos_sucursal_in_ciudad' ] );
+	}
+	if( isset( $_POST[ 'datos_sucursal_in_latitud' ] ) ) {
+	    update_post_meta( $id, 'datos_sucursal_meta_latitud', $_POST[ 'datos_sucursal_in_latitud' ] );
+	}
+	if( isset( $_POST[ 'datos_sucursal_in_longitud' ] ) ) {
+	    update_post_meta( $id, 'datos_sucursal_meta_longitud', $_POST[ 'datos_sucursal_in_longitud' ] );
+	}
+	if( isset( $_POST[ 'datos_sucursal_in_calle' ] ) ) {
+	    update_post_meta( $id, 'datos_sucursal_meta_calle', $_POST[ 'datos_sucursal_in_calle' ] );
+	}
+	if( isset( $_POST[ 'datos_sucursal_in_cp' ] ) ) {
+	    update_post_meta( $id, 'datos_sucursal_meta_cp', $_POST[ 'datos_sucursal_in_cp' ] );
+	}
+	if( isset( $_POST[ 'datos_sucursal_in_tel' ] ) ) {
+	    update_post_meta( $id, 'datos_sucursal_meta_tel', $_POST[ 'datos_sucursal_in_tel' ] );
 	}
 	if( isset( $_POST[ 'pause_last_in' ] ) ) {
 	    update_post_meta( $id, 'pause_last_meta', $_POST[ 'pause_last_in' ] );
