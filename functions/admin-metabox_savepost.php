@@ -42,6 +42,8 @@ function cltvo_metaboxes(){
 			array('trabajos_pt'),			//post type
 			'side'						//posición
 		);
+		
+		
 		add_meta_box(
 			'datos_sucursal_mb',		//id
 			'Datos Sucursal',				//título
@@ -236,6 +238,9 @@ function sucursal_relacionada_mb($object) {
 	
 
 }
+
+
+
 
 function expo_relacionada_mb($object) {
 

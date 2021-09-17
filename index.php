@@ -55,6 +55,8 @@
 				            foreach ( $trabajos as $trabajo ):
 								 $empresa_relacionada = get_post_meta( $trabajo->ID, 'empresa_relacionada_meta', true );
                                  $empresa_relacionada = $empresa_relacionada[0];
+                                 $sucursal_relacionada = get_post_meta( $trabajo->ID, 'sucursal_relacionada_meta', true ); 
+								 $sucursal_relacionada = $sucursal_relacionada[0];
 
          
 		    ?>
@@ -64,7 +66,7 @@
                            
                            <b><?php echo get_the_title( $trabajo->ID ); ?></b><br><br> <!-- Imprime Puesto -->
                            &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa -->
-                           <p class="fa fa-map-marker"> <?php echo get_post_meta( $empresa_relacionada, 'datos_destacado_meta', true ); ?> </p><br><!-- Imprime Ubicacion-->         
+                           <p class="fa fa-map-marker"> <?php echo get_the_title ($sucursal_relacionada); ?> </p><br><!-- Imprime Ubicacion-->         
                            <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
                            
                            <!-- echo "<a href='$link' title='$linktitle'>$linkname</a>"; -->

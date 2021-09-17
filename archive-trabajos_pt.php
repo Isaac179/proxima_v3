@@ -2,7 +2,7 @@
 <div class="row cuerpo" id="inicio" >
 <div class="row seccion-pagina">
         <div class="cuadricula">
-<!--SELECT EMPRESA-->
+<!--INICIO SELECT BOX EMPRESA-->
 <select name="empresa" id="empresa">
 	<option>EMPRESA</option>
 
@@ -12,43 +12,49 @@
 				            'posts_per_page' => -1,				            
 				            'order' => 'ASC',
 				        	) );
-				        foreach ( $empresas as $empresa ):
-								 							         
+				        foreach ( $empresas as $empresa ):			 							         
 					?>
 								<option>
 									<?php echo get_the_title( $empresa->ID); ?>
 								</option>
                         <?php endforeach;?>
 </select>
+<!--FIN SELECT BOX EMPRESA-->
 
-<!--SELECT CIUDAD-->
+<!--INICIO SELECT BOX CIUDAD-->
 <select name="ciudad" id="ciudad">
-	<option>CIUDAD</option>
-
-					<?php 				
-				        $sucursales = get_posts( array(
-				            'post_type' => 'sucursales_pt',
-				            'posts_per_page' => -1,				            
-				            'order' => 'ASC',
+					<?php 
+							$sucursales= get_posts( array(
+								'post_type' => 'sucursales_pt',
+								'posts_per_page' => -1,				            
+				            	'order' => 'ASC',
 				        	) ); 
 
-							// dd($sucursales);
-							
-						foreach ( $sucursales as $sucursal ):
+							$ciudades= array(
+								'ciudad'=> 'CIUDAD',
+							);
 
-					?>
+							$j=0;
+							foreach ( $sucursales as $sucursal ):
+
+									  $nombre_ciudad = get_post_meta( $sucursal->ID, 'datos_sucursal_meta_ciudad', true ); 
+									  if(in_array($nombre_ciudad,$ciudades)){
+										//SI LA CIUDAD YA EXISTE EN EL ARREGLO NO LA AGREGA
+									  }else{
+										$ciudades[$j] = $nombre_ciudad; //SI NO ESTA LA AGREGA
+										$j++;
+									  }				     							  
+					?>						    	
+							<?php endforeach;?>
+							
+							<?php foreach ($ciudades as $ciudad):?>
 								<option>
-									<?php echo get_the_title( $sucursal->ID);?>
+									<?php echo $ciudad; ?>
 								</option>
-						<?php endforeach;?>
+							<?php endforeach;?>	
 														 							         
 </select>
-
-
-<!-- <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Search.." name="search2">
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form> -->
+<!--FIN SELECT BOX CIUDAD-->
 
             <div class="cuadro medio-12 grande-12 chico-12 slider-home">
                 <?php 
@@ -72,7 +78,8 @@
 				        foreach ( $trabajos as $trabajo ):
 								 $empresa_relacionada = get_post_meta( $trabajo->ID, 'empresa_relacionada_meta', true );
                                  $empresa_relacionada = $empresa_relacionada[0];
-								 $nom = get_the_title( $empresa_relacionada);  
+								 $sucursal_relacionada = get_post_meta( $trabajo->ID, 'sucursal_relacionada_meta', true ); 
+								 $sucursal_relacionada = $sucursal_relacionada[0];
        
 						?>
 
@@ -81,8 +88,9 @@
                            
                            <b><?php echo get_the_title( $trabajo->ID ); ?></b><br><br> <!-- Imprime Puesto -->
                            &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa --> 
-                           <p class="fa fa-map-marker"> <?php echo get_post_meta( $empresa_relacionada, 'datos_destacado_meta', true ); ?> </p><br><!-- Imprime Ubicacion-->         
-                           <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
+                           <p class="fa fa-map-marker"> <?php echo get_the_title ($sucursal_relacionada); ?> </p><br><!-- Imprime Ubicacion-->         
+						 
+						   <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
                            
                            <!-- echo "<a href='$link' title='$linktitle'>$linkname</a>"; -->     
                           </div>
@@ -90,7 +98,6 @@
                 <?php endforeach;?>
                 <div class="row">
                     <br><br>
-                        <!-- <a href="<?php echo get_post_type_archive_link( 'trabajos_pt' ) ?> ">Ver todas las ofertas de trabajo ></a> -->
                 </div>  
             </div>
         </div>    
