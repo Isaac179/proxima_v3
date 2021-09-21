@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div class="row cuerpo">
-    <div class="row seccion-pagina">
+        <div class="row seccion-pagina">
         <div class="columns grande-1 medio-2 chico-12">
             <span>Empresa</span>
         </div>
@@ -44,6 +44,13 @@
 				            foreach ( $trabajos as $trabajo ):
 								$empresa_relacionada = get_post_meta( $trabajo->ID, 'empresa_relacionada_meta', true );
                                  $empresa_relacionada = $empresa_relacionada[0];
+                                 $sucursal_relacionada = get_post_meta( $trabajo->ID, 'sucursal_relacionada_meta', true ); 
+								 $sucursal_relacionada = $sucursal_relacionada[0];
+                                 
+                                 
+                                 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
+                                 $detecta= basename ($url);  
+                                //  if($detecta == $emp):
                             
 						?>
 
@@ -52,13 +59,16 @@
                            
                            <?php echo get_the_title( $trabajo->ID ); ?><br><br> <!-- Imprime Puesto -->
                            &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa -->
-                           <p class="fa fa-map-marker"> <?php echo get_post_meta( $empresa_relacionada, 'datos_destacado_meta', true ); ?> </p><br><!-- Imprime Ubicacion-->         
+                           <p class="fa fa-map-marker"> <?php echo get_the_title ($sucursal_relacionada); ?> </p><br><!-- Imprime Ubicacion-->         
                            <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
-                           
+                           <?php $emp =  get_the_title( $empresa_relacionada); ?>
                            <!-- echo "<a href='$link' title='$linktitle'>$linkname</a>"; -->
                                
                 </div>
+               
                 <?php endforeach;?>
+                <?php echo $detecta ?>
+                <?php echo $empresa_relacionada;?>
                 <div class="row">
                     <br><br>
                         <a href="<?php echo get_post_type_archive_link( 'trabajos_pt' ) ?> ">Ver todas las ofertas de trabajo ></a>
@@ -83,11 +93,15 @@
 		</div>
         </div>
         </div>
-
+        <?php
+                              
+            
+         ?>
 <div class="row footer-proxima">
 	<div class="row">
     <div class="row pre-footer">
             <p>SIGUENOS EN FACEBOOK @PROXIMA</p>
+            <?php print_r($post);  ?>
 	</div>
     </div>
 </div>

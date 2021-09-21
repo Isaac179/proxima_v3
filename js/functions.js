@@ -149,6 +149,64 @@
 		$("[href='#']").click(function(e){
 	      e.preventDefault();
 	    });
+		/*NUEVA FUNCION CAMBIO*/
+		$('#cambio_ciudad_JS').on('change', function() {
+			var status = this.value;
+			console.log(status);
+			var $_GET =  obtener_get();
+			console.log($_GET);
+			var get_ciudad = $_GET['ciudad'];
+              	get_ciudad = parseInt(get_ciudad);
+
+				  if (isNaN(get_ciudad)) {
+					get_ciudad = status;
+					get_ciudad= get_ciudad.toString();
+					var url = window.location.href;
+				  url = url+'?ciudad='+ get_ciudad;
+				} else{
+					var url = window.location.href;
+				  url = url.replace('ciudad='+get_ciudad, 'ciudad='+status); // obtenemos el contenido del atributo href del boton next post 
+				};
+
+				window.history.replaceState( {} , '', url); //cambia la direccion del post a travez del historial 
+				
+        		
+				$('#formulario-2').show();
+
+			   $('[identificador]').hide();
+
+			   $('[identificador*="'+get_ciudad+',"]').show();
+		  });
+
+		/*TERMINA NUEVA FUNCION CAMBIO*/
+
+		$('select[id="cambio_ciudad_JS"]').change(function(){
+            var status = $(this).attr('value'); 
+
+            var $_GET =  obtener_get();// obtenemos el get de la URL
+          	var get_puesto = $_GET['puesto'];
+              	get_puesto = parseInt(get_puesto); 
+              	 if (isNaN(get_puesto)) {
+              	 	get_puesto = status;
+              	 	get_puesto= get_puesto.toString();
+              	 	var link = window.location.href;
+		         	link = link+'?sucursal=0&puesto='+ get_puesto;
+              	 } else{
+		          	 var link = window.location.href;
+		         	link = link.replace('puesto='+get_puesto, 'puesto='+status); // obtenemos el contenido del atributo href del boton next post 
+              	 };
+
+            
+             window.history.replaceState( {} , '', link); //cambia la direccion del post a travez del historial 
+        		
+             	$('#formulario-2').show();
+
+        		$('[identificador]').hide();
+
+        		$('[identificador*="'+get_puesto+',"]').show();
+        		
+
+        });
 
 	    $( '.inputfile' ).each( function()
 			{
@@ -418,6 +476,9 @@
         		
 
         });
+
+
+
 
  		$('input:radio[name="contact-form_JS[sucursal]"]').change(function(){
             var status = $(this).attr('sucursal');
