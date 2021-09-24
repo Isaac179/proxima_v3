@@ -138,47 +138,60 @@
 	        	$( ".contenedor-logo-movimiento" ).addClass('contenedor-logo-static');
 	        	$( ".contenedor-logo-movimiento" ).css({'bottom' : diferencia});
 	        }  
-
-
-
 	});	
 
-	$(document).ready(function(){
-
+	$(document).ready(function(){ 
 
 		$("[href='#']").click(function(e){
 	      e.preventDefault();
 	    });
-		/*NUEVA FUNCION CAMBIO*/
-		$('#cambio_ciudad_JS').on('change', function() {
-			var status = this.value;
-			console.log(status);
-			var $_GET =  obtener_get();
-			console.log($_GET);
-			var get_ciudad = $_GET['ciudad'];
-              	get_ciudad = parseInt(get_ciudad);
 
-				  if (isNaN(get_ciudad)) {
-					get_ciudad = status;
-					get_ciudad= get_ciudad.toString();
-					var url = window.location.href;
-				  url = url+'?ciudad='+ get_ciudad;
-				} else{
-					var url = window.location.href;
-				  url = url.replace('ciudad='+get_ciudad, 'ciudad='+status); // obtenemos el contenido del atributo href del boton next post 
-				};
 
-				window.history.replaceState( {} , '', url); //cambia la direccion del post a travez del historial 
-				
-        		
-				$('#formulario-2').show();
+		/*FUNCION CAMBIO CIUDAD*/
+		$('#cambio_ciudad_JS').on('change', function() { //Inicia la funcion, define el 'id' para llamar la funcion y el evento que la dispara
+			var status = this.value; //Se declara una variable de estado y asigno el valor de la propiedad 'value'
+			console.log(status); //imprimie en consola $status
+			var $_GET =  obtener_get(); //Con la variable GET se llama a la funcion obtener get esta actualiza la url a partir del caracter '?' 
+			var get_ciudad = $_GET['ciudad']; //asigna a $get_ciudad el valor de $_GET con 'ciudad como argumento'
+              	get_ciudad = parseInt(get_ciudad); //convierte a entero
+				  console.log($_GET); //imprime en consola el nuevo valor
+				  if (isNaN(get_ciudad)) { //valida si no es un numero
+					get_ciudad = status; //iguala al valor de estado
+					get_ciudad= get_ciudad.toString(); //devuelve el valor en forma de cadena
+					var url = window.location.href; //devuelve la url de la pagina actual
+				  	url = '?ciudad='+ get_ciudad; //agrega una cadena y la variable $get_ciudad a la url 
+              	 } else{//Si no se cumple lo anterior
+		          	 var url = window.location.href; //actualiza la url de la pagina actual
+		         	 url = url.replace('ciudad='+get_ciudad, 'ciudad='+status); // obtenemos el contenido del atributo href selectbox
+              	 };
 
-			   $('[identificador]').hide();
+                window.history.replaceState( {} , '', url); //cambia la direccion travez del historial 
+        });
+		/*TERMINA FUNCION CAMBIO CIUDAD*/
 
-			   $('[identificador*="'+get_ciudad+',"]').show();
-		  });
 
-		/*TERMINA NUEVA FUNCION CAMBIO*/
+				/*NUEVA FUNCION CAMBIO EMPRESA*/
+				$('#cambio_empresa_JS').on('change', function() {
+					var status = this.value;
+					console.log(status);
+					var $_GET =  obtener_get();
+					console.log($_GET);
+					var get_empresa = $_GET['ciudad'];
+						  get_empresa = parseInt(get_empresa);
+		
+						  if (isNaN(get_empresa)) {
+							get_empresa = status;
+							get_empresa= get_empresa.toString();
+							var url = window.location.href;
+						  url = '?empresa='+ get_empresa;
+						} else{
+		
+						};
+		
+						history.pushState( null , "" , url); //cambia la direccion del post a travez del historial 
+				  });
+				/*TERMINA NUEVA FUNCION CAMBIO EMPRESA*/
+
 
 		$('select[id="cambio_ciudad_JS"]').change(function(){
             var status = $(this).attr('value'); 
@@ -450,6 +463,7 @@
 				email: 'El E-mail debe tener un formato válido',
 			});
 
+			/*FUNCION ORIGEN*/
 			$('select[id="cont_puesto_JS"]').change(function(){
             var status = $(this).attr('value');
             var $_GET =  obtener_get();// obtenemos el get de la URL
@@ -491,6 +505,8 @@
         	$('.formulario-3').show();
 
         });
+
+		/*FUNCION ORIGEN*/
 
 
 		};

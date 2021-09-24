@@ -327,3 +327,21 @@ function example_ajax_request() {
 // This bit is a special action hook that works with the WordPress AJAX functionality.
 add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
 add_action( 'wp_ajax_nopriv_example_ajax_request', 'example_ajax_request' ); 
+
+function wpdocs_after_setup_theme() {
+    add_theme_support( 'html5', array( 'search-form' ) );
+}
+add_action( 'after_setup_theme', 'wpdocs_after_setup_theme' );
+
+
+function template_chooser($template)   
+{    
+  global $wp_query;   
+  $post_type = get_query_var('post_type');   
+  if( $wp_query->is_search && $post_type == 'trabajos_pt' )   
+  {
+    return locate_template('search.php');  //  redirect to archive-search.php
+  }   
+  return $template;   
+}
+add_filter('template_include', 'template_chooser');  
