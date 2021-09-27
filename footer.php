@@ -18,7 +18,12 @@
 				</div>
 				<div class="row">
 				<!-- <iframe src="https://www.google.com/maps/d/embed?mid=1ZHZU4F297jgNs-odOQP7vWkdrs3jK8xe"></iframe> -->
-				<iframe src="https://snazzymaps.com/embed/329881" width="100%" height="100%" style="border:none;"></iframe>
+				<!-- <iframe src="https://snazzymaps.com/embed/329881" width="100%" height="100%" style="border:none;"></iframe> GOOGLE-->
+				<!-- <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-99.64947223663331%2C19.279752236656048%2C-99.63531017303468%2C19.289008179385018&amp;layer=transportmap"  width="100%" height="200px" style="border:none;"></iframe>  -->
+				<iframe src="//umap.openstreetmap.fr/es/map/mapa-sin-titulo_660568?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"  width="100%" height="200px" style="border:none;"></iframe> <!-- OPEN STREET MAP-->	
+				
+				
+					
 				</div>
 
 			<div class=" mancha-footer">

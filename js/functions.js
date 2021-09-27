@@ -165,32 +165,82 @@
 		         	 url = url.replace('ciudad='+get_ciudad, 'ciudad='+status); // obtenemos el contenido del atributo href selectbox
               	 };
 
-                window.history.replaceState( {} , '', url); //cambia la direccion travez del historial 
-        });
+                	 window.history.replaceState( {} , '', url); //cambia la direccion travez del historial 
+        });			//  location.reload();
 		/*TERMINA FUNCION CAMBIO CIUDAD*/
 
+		/*NUEVA FUNCION CAMBIO EMPRESA*/
+						$('#cambio_empresa_JS').on('change', function() { 
+							var status = this.value; 
+							console.log(status); 
+							var $_GET =  obtener_get(); 
+							var id_empresa_get = $_GET['empresa']; 
+								  id_empresa_get = parseInt(id_empresa_get); 
+								  console.log($_GET); 
+								  if (isNaN(id_empresa_get)) { 
+									id_empresa_get = status; 
+									id_empresa_get= id_empresa_get.toString(); 
+									var url = window.location.href; 
+									    url = '?empresa='+id_empresa_get; 
+								   } else{
+									   var url = window.location.href; 
+									   url = url.replace(id_empresa_get, status); 
+								   };
+				
+									 window.history.pushState( {} , '', url);
+									$('#inicio').load (' #inicio');
+									
+						})
+		/*TERMINA NUEVA FUNCION CAMBIO EMPRESA*/
 
-				/*NUEVA FUNCION CAMBIO EMPRESA*/
-				$('#cambio_empresa_JS').on('change', function() {
-					var status = this.value;
-					console.log(status);
-					var $_GET =  obtener_get();
-					console.log($_GET);
-					var get_empresa = $_GET['ciudad'];
-						  get_empresa = parseInt(get_empresa);
+		/* FUNCION 0*/
+		$('#nueva_url_JS').on('change', function(){
+			var status = this.value;
+			var $_GET =obtener_get();
+			var empresa_get = $_GET['empresa'];
+			empresa_get = parseInt(empresa_get);
+			if(isNaN(empresa_get)){
+				empresa_get = status;
+				empresa_get = empresa_get.toString();
+				var link = window.location.href;
+					link= '?empresa='+empresa_get+'ciudad=0';
+			}else{
+				var link= window.location.href;
+				link = link.replace(empresa_get, status);
+			};
+			window.history.pushState({}, '', link);
+		})
+		/* TERMINA FUNCION 0 */
+
+		/*INICIA TEST*/
+
+		jQuery(function($) {
+			$('select[id="test"]').on('change', function() {
+				var $_GET = obtener_get();
+				var url = $(this).val(); 
+				if (url) {
+					window.location = '?empresa='+url;
+				}
+				return false;
+			});
+
+			$('select[id="test2"]').on('change', function() {
+				var $_GET = obtener_get();
+				var url = $(this).val();
+				if (url) {
+					window.location = '?ciudad='+url;
+				}
+				return false;
+			});
+
+			
+		});
+
 		
-						  if (isNaN(get_empresa)) {
-							get_empresa = status;
-							get_empresa= get_empresa.toString();
-							var url = window.location.href;
-						  url = '?empresa='+ get_empresa;
-						} else{
-		
-						};
-		
-						history.pushState( null , "" , url); //cambia la direccion del post a travez del historial 
-				  });
-				/*TERMINA NUEVA FUNCION CAMBIO EMPRESA*/
+
+
+		/*TERMINA TEST */
+
 
 
 		$('select[id="cambio_ciudad_JS"]').change(function(){

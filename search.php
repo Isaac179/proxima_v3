@@ -1,5 +1,14 @@
 <?php get_header(); 
 
+/*
+Template Name: Search Page
+*/
+
+global $query_string;
+
+wp_parse_str($query_string, $search_query);
+$search = new WP_Query( $search_query);
+
 if (!isset($_GET['empresa'])) {
 	$id_empresa_get = "null";
 } else{
@@ -17,10 +26,11 @@ if (!isset($_GET['ciudad'])) {
 <div class="row seccion-pagina">
 <div class="cuadricula" style="padding-left: 20px;"><br>
 <?php get_search_form(); ?>
-<h3>Resultados para la busqueda:&nbsp;<?php echo '"'.$s.'"'; ?></h3>
+<h3>Resultados para la búsqueda:&nbsp;<?php echo '"'.$s.'"'; ?></h3>
+
 <br>
 <?php
-$id_empresa_get = '22778';
+$id_empresa_get = $s;
 if($id_empresa_get == 'null' && $id_ciudad_get == 'null'):
 	$trabajos = get_posts( array(
 		'post_type' => 'trabajos_pt',
@@ -126,8 +136,22 @@ $sucursal_relacionada = $sucursal_relacionada[0];
         </div>    
     </div>
     </div>
-
+	
+	<!-- <?php echo $search_query = get_search_query(); ?> -->
+	
+	<?php
+	$args = array(
+		'post_type' => 'trabajos_pt',
+		// 's' 		=> $s,
+	);
+	$results = new WP_Query($args);
+	foreach ($results->posts as $post) {
+			echo $post->post_title;
+	}
+	wp_reset_postdata();
+	?>
 
 </div>
 </div>
+
 <?php get_footer(); ?>

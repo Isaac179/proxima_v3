@@ -156,6 +156,7 @@ include_once('functions/theme-functions.php');
 ?>
 
 
+
 <?php
 /**
 * WP AJAX Call Frontend
@@ -178,19 +179,19 @@ function add_this_script_footer(){ ?>
 <script>
 jQuery(document).ready(function($) {
     // This is the variable we are passing via AJAX
-    var selecta = 'Valparaiso';
+    var fruit = 'Banana';
     // This does the ajax request (The Call).
 
-    $( ".valparaiso" ).click(function() {
+    $( ".banana" ).click(function() {
       $.ajax({
           url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
           data: {
               'action':'example_ajax_request', // This is our PHP function below
-              'selecta' : selecta // This is the variable we are sending via AJAX
+              'fruit' : fruit // This is the variable we are sending via AJAX
           },
           success:function(data) {
       // This outputs the result of the ajax request (The Callback)
-              $(".valparaiso").text(data);
+              $(".banana").text(data);
           },
           error: function(errorThrown){
               window.alert(errorThrown);
@@ -198,101 +199,6 @@ jQuery(document).ready(function($) {
       });
     });
 });
-
-
-jQuery(document).ready(function($) {
-    // This is the variable we are passing via AJAX
-    var selecta = 'Columba';
-    // This does the ajax request (The Call).
-
-    $( ".columba" ).click(function() {
-      $.ajax({
-          url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
-          data: {
-              'action':'example_ajax_request', // This is our PHP function below
-              'selecta' : selecta // This is the variable we are sending via AJAX
-          },
-          success:function(data) {
-      // This outputs the result of the ajax request (The Callback)
-              $(".columba").text(data);
-          },
-          error: function(errorThrown){
-              window.alert(errorThrown);
-          }
-      });
-    });
-});
-
-jQuery(document).ready(function($) {
-    // This is the variable we are passing via AJAX
-    var selecta = 'Metapath';
-    // This does the ajax request (The Call).
-
-    $( ".metapath" ).click(function() {
-      $.ajax({
-          url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
-          data: {
-              'action':'example_ajax_request', // This is our PHP function below
-              'selecta' : selecta // This is the variable we are sending via AJAX
-          },
-          success:function(data) {
-      // This outputs the result of the ajax request (The Callback)
-              $(".metapath").text(data);
-          },
-          error: function(errorThrown){
-              window.alert(errorThrown);
-          }
-      });
-    });
-});
-
-jQuery(document).ready(function($) {
-    // This is the variable we are passing via AJAX
-    var selecta = 'Lapcit';
-    // This does the ajax request (The Call).
-
-    $( ".lapcit" ).click(function() {
-      $.ajax({
-          url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
-          data: {
-              'action':'example_ajax_request', // This is our PHP function below
-              'selecta' : selecta // This is the variable we are sending via AJAX
-          },
-          success:function(data) {
-      // This outputs the result of the ajax request (The Callback)
-              $(".lapcit").text(data);
-          },
-          error: function(errorThrown){
-              window.alert(errorThrown);
-          }
-      });
-    });
-});
-
-jQuery(document).ready(function($) {
-    // This is the variable we are passing via AJAX
-    var selecta = 'Cencal';
-    // This does the ajax request (The Call).
-
-    $( ".cencal" ).click(function() {
-      $.ajax({
-          url: ajaxurl, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
-          data: {
-              'action':'example_ajax_request', // This is our PHP function below
-              'selecta' : selecta // This is the variable we are sending via AJAX
-          },
-          success:function(data) {
-      // This outputs the result of the ajax request (The Callback)
-              $(".cencal").text(data);
-          },
-          error: function(errorThrown){
-              window.alert(errorThrown);
-          }
-      });
-    });
-});
-
-
 </script>
 <?php }
 add_action('wp_footer', 'add_this_script_footer');
@@ -301,25 +207,13 @@ add_action('wp_footer', 'add_this_script_footer');
 function example_ajax_request() {
     // The $_REQUEST contains all the data sent via AJAX from the Javascript call
     if ( isset($_REQUEST) ) {
-        $selecta = $_REQUEST['selecta'];
-        // This bit is going to process our selecta variable into an Apple
-        if ( $selecta == 'valparaiso' ) {
-            $selecta = 'empresa1';
-        }
-		if ( $selecta == 'metapath' ) {
-            $selecta = 'empresa2';
-        }
-		if ( $selecta == 'lapcit' ) {
-            $selecta = 'empresa3';
-        }
-		if ( $selecta == 'columba' ) {
-            $selecta = 'empresa4';
-        }
-		if ( $selecta == 'cencal' ) {
-            $selecta = 'empresa5';
+        $fruit = $_REQUEST['fruit'];
+        // This bit is going to process our fruit variable into an Apple
+        if ( $fruit == 'Banana' ) {
+            $fruit = 'Apple';
         }
         // Now let's return the result to the Javascript function (The Callback)
-        echo $selecta;
+        echo $fruit;
     }
     // Always die in functions echoing AJAX content
    die();
@@ -328,20 +222,3 @@ function example_ajax_request() {
 add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
 add_action( 'wp_ajax_nopriv_example_ajax_request', 'example_ajax_request' ); 
 
-function wpdocs_after_setup_theme() {
-    add_theme_support( 'html5', array( 'search-form' ) );
-}
-add_action( 'after_setup_theme', 'wpdocs_after_setup_theme' );
-
-
-function template_chooser($template)   
-{    
-  global $wp_query;   
-  $post_type = get_query_var('post_type');   
-  if( $wp_query->is_search && $post_type == 'trabajos_pt' )   
-  {
-    return locate_template('search.php');  //  redirect to archive-search.php
-  }   
-  return $template;   
-}
-add_filter('template_include', 'template_chooser');  

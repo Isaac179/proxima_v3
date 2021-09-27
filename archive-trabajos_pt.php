@@ -12,16 +12,20 @@ if (!isset($_GET['ciudad'])) {
             $id_ciudad_get = $_GET['ciudad'];
     };
 ?>
-<div class="row cuerpo" id="inicio" >
-<div class="row seccion-pagina">
+
+
+<div class="row cuerpo">
+<div class="row seccion-pagina" style="padding-bottom:0px">
 <div class="cuadricula" style="padding-left: 20px;">
 			
-			<!-- <?php echo $id_empresa_get; ?> -->
+<!-- <?php echo $id_empresa_get; ?> -->
 <br>
 <?php get_search_form(); ?>
 
+<!-- <div><a class="banana">Banana</a></div> -->
+
 <!--INICIO SELECT BOX EMPRESA-->
-<select onChange="window.location.href=this.value" name="empresa" id="empresa">
+<select name="empresa" id="test">
 	<option>EMPRESA</option>
 
                     <?php 				
@@ -32,8 +36,8 @@ if (!isset($_GET['ciudad'])) {
 				        	) );
 				        foreach ( $empresas as $empresa ):			 							         
 					?>
-								<option value="<?php ( get_page_by_title( 'bolsa-trabajos' ));?>?empresa=<?php echo $empresa->ID;?>&ciudad=<?php echo $id_ciudad_get;?>">
-									<?php echo get_the_title( $empresa->ID); ?>
+								<option value="<?php echo $empresa->ID;?>">
+									<?php echo get_the_title( $empresa->ID); ?> 
 								</option>
                         <?php endforeach;?>
 </select>
@@ -41,7 +45,7 @@ if (!isset($_GET['ciudad'])) {
 
 			
 <!--INICIO SELECT BOX CIUDAD-->
-<select   name="ciudad" id="cambio_ciudad_JS">
+<select   name="ciudad" id="test2">
 					<?php 
 							$sucursales= get_posts( array(
 								'post_type' => 'sucursales_pt',
@@ -50,7 +54,7 @@ if (!isset($_GET['ciudad'])) {
 				        	) ); 
 
 							$ciudades= array(
-								'ciudad'=> 'CIUDAD',
+								'ciudad'=> 'CIUDAD'
 							);
 
 							$j=0;
@@ -72,7 +76,13 @@ if (!isset($_GET['ciudad'])) {
 														 							         
 </select> <br><br>
 <!--FIN SELECT BOX CIUDAD-->
+</div>
+</div>
+</div>
 
+<div class="row cuerpo" id="inicio" style="padding-top:0px">
+<div class="row seccion-pagina">
+<div class="cuadricula" style="padding-left: 20px;">
 <?php 
 if($id_empresa_get == 'null' && $id_ciudad_get == 'null'):
 	$trabajos = get_posts( array(

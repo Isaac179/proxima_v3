@@ -129,7 +129,7 @@ $sucursal_relacionada = $sucursal_relacionada[0];
                                
                 </div>
 
-<?php endforeach; else:echo "No hay vacantes disponibles para esta busqueda!"; endif?>
+<?php endforeach; else:echo "No hay vacantes disponibles"; endif?>
 
                 <div class="row">
                     <br><br>
@@ -139,7 +139,7 @@ $sucursal_relacionada = $sucursal_relacionada[0];
                          $url = $_SERVER["HTTP_HOST"].'/sass-wp/bolsa-trabajos/?empresa='.$id; 
                          
                         ?>
-                        <a href="<?php echo "http://" . $host . $url; ?>">Ver todas las ofertas de trabajo ></a>
+                        <a href="<?php echo "http://" . $host . $url; ?>">Ver todas las ofertas de trabajo para <?php echo get_the_title( $empresa_relacionada); ?> ></a>
                 </div>  
             </div>
         </div>    
