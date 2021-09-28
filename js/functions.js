@@ -170,106 +170,92 @@
 		/*TERMINA FUNCION CAMBIO CIUDAD*/
 
 		/*NUEVA FUNCION CAMBIO EMPRESA*/
-						$('#cambio_empresa_JS').on('change', function() { 
-							var status = this.value; 
-							console.log(status); 
-							var $_GET =  obtener_get(); 
+						$('.cambio_selector_JS').on('change', function() { 
+							var empresa = $('.valor_empresa').val();
+							var ciudad = $('.valor_ciudad').val(); 
+							var $_GET =  obtener_get();
 							var id_empresa_get = $_GET['empresa']; 
-								  id_empresa_get = parseInt(id_empresa_get); 
-								  console.log($_GET); 
-								  if (isNaN(id_empresa_get)) { 
-									id_empresa_get = status; 
-									id_empresa_get= id_empresa_get.toString(); 
-									var url = window.location.href; 
-									    url = '?empresa='+id_empresa_get; 
-								   } else{
-									   var url = window.location.href; 
-									   url = url.replace(id_empresa_get, status); 
-								   };
-				
-									 window.history.pushState( {} , '', url);
-									$('#inicio').load (' #inicio');
-									
+							    id_empresa_get = parseInt(id_empresa_get); 
+
+							var id_ciudad_get = $_GET['ciudad']; 
+								id_ciudad_get = parseInt(id_ciudad_get);
+							var url= window.location.href;
+
+								  if (isNaN(id_empresa_get) && isNaN(id_ciudad_get)) {
+									  if(url.includes('?empresa=') && url.includes('?ciudad=')){
+										url = url.replace('empresa=null', 'empresa='+empresa);
+										url = url.replace('ciudad=null', 'ciudad='+ciudad);
+										console.log(url);
+									  } 
+									 
+								   }else if(!isNaN(id_empresa_get) && isNaN(id_ciudad_get)){
+										   url = url.replace('empresa='+id_empresa_get, 'empresa='+empresa);
+								   }
+
+
+
+								   window.history.replaceState({},'',url);		
 						})
 		/*TERMINA NUEVA FUNCION CAMBIO EMPRESA*/
 
-		/* FUNCION 0*/
-		$('#nueva_url_JS').on('change', function(){
-			var status = this.value;
-			var $_GET =obtener_get();
-			var empresa_get = $_GET['empresa'];
-			empresa_get = parseInt(empresa_get);
-			if(isNaN(empresa_get)){
-				empresa_get = status;
-				empresa_get = empresa_get.toString();
-				var link = window.location.href;
-					link= '?empresa='+empresa_get+'ciudad=0';
-			}else{
-				var link= window.location.href;
-				link = link.replace(empresa_get, status);
-			};
-			window.history.pushState({}, '', link);
-		})
-		/* TERMINA FUNCION 0 */
+		// $('#nueva_url_JS').on('change', function(){
+		// 	var status = this.value;
+		// 	var $_GET =obtener_get();
+		// 	var empresa_get = $_GET['empresa'];
+		// 	empresa_get = parseInt(empresa_get);
+		// 	if(isNaN(empresa_get)){
+		// 		empresa_get = status;
+		// 		empresa_get = empresa_get.toString();
+		// 		var link = window.location.href;
+		// 			link= '?empresa='+empresa_get;
+		// 	}else{
+		// 		var link= window.location.href;
+		// 		link = link.replace(empresa_get, status);
+		// 	};
+		// 	window.history.pushState({}, '', link);
+		// })
+
 
 		/*INICIA TEST*/
+		// $("select").change(function () { 
+		// 		var str = "";
+		// 		$("select option:selected").each(function () {
+		// 			str += '&' + $(this).parent().attr('name') + "="+ $(this).attr('value');   
+		// 		});
 
-		jQuery(function($) {
-			$('select[id="test"]').on('change', function() {
-				var $_GET = obtener_get();
-				var url = $(this).val(); 
-				if (url) {
-					window.location = '?empresa='+url;
-				}
-				return false;
-			});
-
-			$('select[id="test2"]').on('change', function() {
-				var $_GET = obtener_get();
-				var url = $(this).val();
-				if (url) {
-					window.location = '?ciudad='+url;
-				}
-				return false;
-			});
-
-			
-		});
-
-		
-
-
+		// 		   window.history.pushState({}, '', '?'+str.split('&')[1]+'&'+str.split('&')[2]);
+		// 	});
 		/*TERMINA TEST */
 
 
 
-		$('select[id="cambio_ciudad_JS"]').change(function(){
-            var status = $(this).attr('value'); 
+		// $('select[id="cambio_ciudad_JS"]').change(function(){
+        //     var status = $(this).attr('value'); 
 
-            var $_GET =  obtener_get();// obtenemos el get de la URL
-          	var get_puesto = $_GET['puesto'];
-              	get_puesto = parseInt(get_puesto); 
-              	 if (isNaN(get_puesto)) {
-              	 	get_puesto = status;
-              	 	get_puesto= get_puesto.toString();
-              	 	var link = window.location.href;
-		         	link = link+'?sucursal=0&puesto='+ get_puesto;
-              	 } else{
-		          	 var link = window.location.href;
-		         	link = link.replace('puesto='+get_puesto, 'puesto='+status); // obtenemos el contenido del atributo href del boton next post 
-              	 };
+        //     var $_GET =  obtener_get();// obtenemos el get de la URL
+        //   	var get_puesto = $_GET['puesto'];
+        //       	get_puesto = parseInt(get_puesto); 
+        //       	 if (isNaN(get_puesto)) {
+        //       	 	get_puesto = status;
+        //       	 	get_puesto= get_puesto.toString();
+        //       	 	var link = window.location.href;
+		//          	link = link+'?sucursal=0&puesto='+ get_puesto;
+        //       	 } else{
+		//           	 var link = window.location.href;
+		//          	link = link.replace('puesto='+get_puesto, 'puesto='+status); // obtenemos el contenido del atributo href del boton next post 
+        //       	 };
 
             
-             window.history.replaceState( {} , '', link); //cambia la direccion del post a travez del historial 
+        //      window.history.replaceState( {} , '', link); //cambia la direccion del post a travez del historial 
         		
-             	$('#formulario-2').show();
+        //      	$('#formulario-2').show();
 
-        		$('[identificador]').hide();
+        // 		$('[identificador]').hide();
 
-        		$('[identificador*="'+get_puesto+',"]').show();
+        // 		$('[identificador*="'+get_puesto+',"]').show();
         		
 
-        });
+        // });
 
 	    $( '.inputfile' ).each( function()
 			{
@@ -514,6 +500,8 @@
 			});
 
 			/*FUNCION ORIGEN*/
+
+
 			$('select[id="cont_puesto_JS"]').change(function(){
             var status = $(this).attr('value');
             var $_GET =  obtener_get();// obtenemos el get de la URL
@@ -534,14 +522,12 @@
         		
              	$('#formulario-2').show();
 
-        		$('[identificador]').hide();
+        		$('[identificador]').show();
 
         		$('[identificador*="'+get_puesto+',"]').show();
         		
 
         });
-
-
 
 
  		$('input:radio[name="contact-form_JS[sucursal]"]').change(function(){

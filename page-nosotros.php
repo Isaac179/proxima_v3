@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="row cuerpo" id="inicio" >
 <div class="row seccion-pagina">
-    <h1>Boletin</h1>
+    <h1>Nosotros</h1>
                 <div class="columns medio-12 grande-11 chico-12"> 
                 <?php 
                    

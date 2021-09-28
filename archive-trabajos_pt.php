@@ -25,8 +25,8 @@ if (!isset($_GET['ciudad'])) {
 <!-- <div><a class="banana">Banana</a></div> -->
 
 <!--INICIO SELECT BOX EMPRESA-->
-<select name="empresa" id="test">
-	<option>EMPRESA</option>
+<select class="cambio_selector_JS valor_empresa" name="empresa" >
+	<option value="null">EMPRESA</option>
 
                     <?php 				
 				        $empresas = get_posts( array(
@@ -41,11 +41,12 @@ if (!isset($_GET['ciudad'])) {
 								</option>
                         <?php endforeach;?>
 </select>
-<!--FIN SELECT BOX EMPRESA-->			
+<!--FIN SELECT BOX EMPRESA-->
 
 			
 <!--INICIO SELECT BOX CIUDAD-->
-<select   name="ciudad" id="test2">
+<select class="cambio_selector_JS valor_ciudad" name="ciudad">
+<option value="null">CIUDAD</option>
 					<?php 
 							$sucursales= get_posts( array(
 								'post_type' => 'sucursales_pt',
@@ -53,16 +54,14 @@ if (!isset($_GET['ciudad'])) {
 				            	'order' => 'ASC',
 				        	) ); 
 
-							$ciudades= array(
-								'ciudad'=> 'CIUDAD'
-							);
+							$ciudades= array();
 
 							$j=0;
 							foreach ( $sucursales as $sucursal ):
 
 									  $nombre_ciudad = get_post_meta( $sucursal->ID, 'datos_sucursal_meta_ciudad', true ); 
 									  if(!in_array($nombre_ciudad,$ciudades)){
-										$ciudades[$j] = $nombre_ciudad; //SI NO ESTA LA AGREGA
+										$ciudades[$j] = $nombre_ciudad; //SI NO ESTA LA AGREGA EL ELEMENTO AL ARRAY
 										$j++;
 									  }
 							endforeach				     							  
