@@ -146,7 +146,7 @@ $sucursal_relacionada = $sucursal_relacionada[0];
 	);
 	$results = new WP_Query($args);
 	foreach ($results->posts as $post) {
-			echo $post->post_title;
+			// echo $post->post_title;
 	}
 	wp_reset_postdata();
 	?>

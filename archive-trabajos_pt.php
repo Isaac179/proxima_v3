@@ -1,4 +1,3 @@
-
 <?php get_header(); 
  
   if (!isset($_GET['empresa'])) {
@@ -14,12 +13,12 @@ if (!isset($_GET['ciudad'])) {
 ?>
 
 
-<div class="row cuerpo">
+<div class="row cuerpo"><br>
 <div class="row seccion-pagina" style="padding-bottom:0px">
 <div class="cuadricula" style="padding-left: 20px;">
 			
 <!-- <?php echo $id_empresa_get; ?> -->
-<br>
+
 <?php get_search_form(); ?>
 
 <!-- <div><a class="banana">Banana</a></div> -->
@@ -175,11 +174,10 @@ $sucursal_relacionada = $sucursal_relacionada[0];
                            
                            <b><?php echo get_the_title( $trabajo->ID ); ?></b><br><br> <!-- Imprime Puesto -->
                            &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa --> 
-                           <p class="fa fa-map-marker"> <?php echo get_the_title ($sucursal_relacionada); ?> </p><br><!-- Imprime Ubicacion-->         
-						 
-						   <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
-                           
-                           <!-- echo "<a href='$link' title='$linktitle'>$linkname</a>"; -->     
+                           <p class="fa fa-map-marker">&nbsp;</p> <?php echo get_the_title ($sucursal_relacionada); ?>
+                           <!-- <p><?php echo get_the_title ($sucursal_relacionada); ?> </p><br>Imprime Ubicacion  -->
+                           </b><br> 
+                           <a style="text-decoration:none; color: black" href="<?php echo get_permalink($trabajo->ID); ?>">Ver más</a> 
                           </div>
 
 <?php endforeach; else:echo "No hay vacantes disponibles para esta busqueda!"; endif?>

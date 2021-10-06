@@ -169,34 +169,51 @@
         });			//  location.reload();
 		/*TERMINA FUNCION CAMBIO CIUDAD*/
 
-		/*NUEVA FUNCION CAMBIO EMPRESA*/
-						$('.cambio_selector_JS').on('change', function() { 
-							var empresa = $('.valor_empresa').val();
-							var ciudad = $('.valor_ciudad').val(); 
-							var $_GET =  obtener_get();
-							var id_empresa_get = $_GET['empresa']; 
-							    id_empresa_get = parseInt(id_empresa_get); 
+/*NUEVA FUNCION CAMBIO SELECTOR OK_V5*/
+$('.cambio_selector_JS').on('change', function() {
+	var empresa = $('.valor_empresa').val();
+	var ciudad = $('.valor_ciudad').val();
+	var $_GET =  obtener_get();
 
-							var id_ciudad_get = $_GET['ciudad']; 
-								id_ciudad_get = parseInt(id_ciudad_get);
-							var url= window.location.href;
+	var id_empresa_get = $_GET['empresa'];
+		id_empresa_get = parseInt(id_empresa_get);
 
-								  if (isNaN(id_empresa_get) && isNaN(id_ciudad_get)) {
-									  if(url.includes('?empresa=') && url.includes('?ciudad=')){
-										url = url.replace('empresa=null', 'empresa='+empresa);
-										url = url.replace('ciudad=null', 'ciudad='+ciudad);
-										console.log(url);
-									  } 
-									 
-								   }else if(!isNaN(id_empresa_get) && isNaN(id_ciudad_get)){
-										   url = url.replace('empresa='+id_empresa_get, 'empresa='+empresa);
-								   }
+	var id_ciudad_get = $_GET['ciudad'];
+		id_ciudad_get = parseInt(id_ciudad_get);
+	var url= window.location.href;
 
+		  if (isNaN(id_empresa_get) && isNaN(id_ciudad_get)) {
+			  if(url.includes('?empresa=') && url.includes('?ciudad=')){
+				 url = url.replace('empresa=null', 'empresa='+empresa);
+				 url = url.replace('ciudad=null', 'ciudad='+ciudad);
+			  }
 
+			  if(id_empresa_get == 'null' && id_ciudad_get == 'null'){
+				 url = '?empresa=null&ciudad=null';
 
-								   window.history.replaceState({},'',url);		
-						})
-		/*TERMINA NUEVA FUNCION CAMBIO EMPRESA*/
+				}else if(id_empresa_get != 'null' && id_ciudad_get == 'null'){
+				         url = '?empresa='+empresa+'&ciudad=null';
+
+				}else if(id_empresa_get == 'null' && id_ciudad_get != 'null'){
+						 url = '?empresa=null&ciudad='+ciudad;
+
+				}else if(id_empresa_get != 'null' && id_ciudad_get != 'null'){
+					     url = '?empresa='+empresa+'&ciudad='+ciudad;
+
+		   }
+		   url = '?empresa='+empresa+'&ciudad='+ciudad;
+			
+		   }else if(!isNaN(id_empresa_get) && isNaN(id_ciudad_get)){
+					url = url.replace('empresa='+id_empresa_get, 'empresa='+empresa);
+					url = url.replace('ciudad='+id_ciudad_get, 'ciudad='+ciudad);
+					url = '?empresa='+empresa+'&ciudad='+ciudad;
+		   }
+
+		   window.history.pushState({},'',url);
+		   $('#inicio').load (' #inicio')
+		   //La excelencia en el pensamiento debe ejercitarse de forma sistematica
+})
+/*TERMINA NUEVA FUNCION CAMBIO SELECTOR OK_V5*/
 
 		// $('#nueva_url_JS').on('change', function(){
 		// 	var status = this.value;

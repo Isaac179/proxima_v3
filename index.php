@@ -1,14 +1,16 @@
 <?php get_header(); ?>
-<div class="row cuerpo" id="inicio" >
+<div class="row cuerpo" id="inicio" ><br>
 
 <div class="row seccion-pagina">
-        <div class="columns grande-1 medio-2 chico-12">
-            <span>Noticias</span>
+        <div class="columns grande-1 medio-2 chico-12 titulos">
+            <h5>Noticias</h5>
             </div>
             <div class="columns medio-10 grande-11 chico-12">
                 <!-- Slider main container -->
                 <div class="swiper-container">
                 <!-- Additional required wrapper -->
+
+                
                 <?php $nostros = get_page_by_title('nosotros');?>
                 <div class="swiper-wrapper">
                     <!-- Slides -->
@@ -23,8 +25,8 @@
 	
 <div class="row seccion-pagina">
         <div class="cuadricula">
-            <div class="cuadro grande-1 medio-2 chico-12">
-                <span>Vacantes</span>
+            <div class="cuadro grande-1 medio-2 chico-12 titulos">
+                <h5>Vacantes</h5>
             </div>
             <div class="cuadro medio-10 grande-11 chico-12 slider-home">
             
@@ -74,10 +76,10 @@
                            
                            <b><?php echo get_the_title( $trabajo->ID ); ?></b><br><br> <!-- Imprime Puesto -->
                            &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa -->
-                           <p class="fa fa-map-marker">&nbsp;
-                               <?php echo get_the_title ($sucursal_relacionada); ?> </p><br><!-- Imprime Ubicacion--> 
-                                
-                           <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
+                           <p class="fa fa-map-marker">&nbsp;</p> <?php echo get_the_title ($sucursal_relacionada); ?>
+                           <!-- <p><?php echo get_the_title ($sucursal_relacionada); ?> </p><br>Imprime Ubicacion  -->
+                           </b><br> 
+                           <a style="text-decoration:none; color: black" href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
                            
                            <!-- echo "<a href='$link' title='$linktitle'>$linkname</a>"; -->
                                
@@ -87,7 +89,7 @@
                 
                 <div class="row">
                     <br><br>
-                        <a href="<?php echo get_post_type_archive_link( 'trabajos_pt' ) ?> ">Ver todas las ofertas de trabajo ></a>
+                        <a style="text-decoration:none; color:black" href="<?php echo get_post_type_archive_link( 'trabajos_pt' ) ?> ">Ver todas las ofertas de trabajo ➜</a>
                 </div>  
             </div>
         </div>    
@@ -96,11 +98,11 @@
 
 	<div class="row seccion-empresa">
         <div class="cuadricula">
-            <div class="cuadro grande-1 medio-2 chico-12">
-                <span>Empresas</span>
+            <div class="cuadro grande-1 medio-2 chico-12 titulos">
+                <h5>Empresas</h5>
             </div>
 			
-            <div class="cuadro medio-10 grande-11 chico-12 slider-home">
+            <div class="cuadro medio-9 grande-11 chico-12 slider-home">
                 <div class="row">
                     <div class="cuadricula">
                     <?php 
@@ -108,14 +110,14 @@
 				            'post_type' => 'empresas_pt',
 				            'posts_per_page' => 4,
 				            'orderby' => 'post_date', 
-				            'order' => 'ASC',
+				            'order' => 'DESC',
 				        ) );
 				 			
 				            foreach ( $empresas as $empresa ):
 								$logo_empresa = get_post_meta( $empresa->ID, 'logo_destacado_meta', true ); 
                             
 						?>
-                            <div class="cuadro grande-3 medio-6 chico-12 cuadro-trabajo logo-empresa2">
+                            <div class="cuadro grande-3 medio-6 chico-12 cuadro-trabajo" style="padding-left:15px;padding-right:25px;">
                                 <a href="<?php echo get_permalink($empresa->ID); ?>"><?php echo $logo_empresa; ?></a>
                             </div>
                             <?php endforeach;?>             
@@ -126,8 +128,8 @@
     </div>
 
 	<div class="row seccion-nosotros">
-            <div class="columns grande-1 medio-2 chico-12">
-                <span>Nosotros</span>
+            <div class="columns grande-1 medio-2 chico-12 titulos">
+                <h5>Nosotros</h5>
             </div>
 
             <div class="columns medio-12 grande-11 chico-12"> 
@@ -144,8 +146,8 @@
 
     <div class="seccion-insta">
         <div class="cuadricula">
-            <div class="cuadro grande-1 medio-2 chico-12">
-                <span>Instagram</span>
+            <div class="cuadro grande-1 medio-2 chico-12 titulos">
+                <h5>Instagram</h5>
             </div>
             <div class="cuadro medio-10 grande-11 chico-12 slider-home">
                 <div class="row">

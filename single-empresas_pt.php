@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header(); ?>br
 <div class="row cuerpo">
         <div class="row seccion-pagina">
         <div class="columns grande-1 medio-2 chico-12">
@@ -23,13 +23,13 @@
             
             <div class="columns medio-10 grande-11 chico-12 slider-home"> 
             <div class="columns medio-12 grande-11 chico-12"> 
-                <?php $nostros = get_page_by_title('empresa');
-                    $img_nosotros = get_the_post_thumbnail_url($empresa->ID);
+                <?php $empresa = get_page_by_title('nosotros');
+                    $img_empresa = get_the_post_thumbnail_url($empresa->ID);
                     $image_id = get_post_thumbnail_id($empresa->ID);
                     $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
                 ?>
 
-                <?php echo $empresa->post_content ?>
+                <?php echo $empresa->post_content?>
             </div>
             </div>
     </div>
@@ -120,12 +120,12 @@ $sucursal_relacionada = $sucursal_relacionada[0];
 <div class="cuadro grande-4 chico-12 cuadro-trabajo" style="border-bottom: 20px solid 
                            <?php echo get_post_meta( $empresa_relacionada, 'color_destacado_meta', true ); ?>;"> <!-- Color Estilo -->
                            
-                           <?php echo get_the_title( $trabajo->ID ); ?><br><br> <!-- Imprime Puesto -->
+                           <b><?php echo get_the_title( $trabajo->ID ); ?></b><br><br> <!-- Imprime Puesto -->
                            &nbsp;&nbsp;<?php echo get_the_title( $empresa_relacionada); ?><br><br> <!-- Imprime Empresa -->
-                           <p class="fa fa-map-marker"> <?php echo get_the_title ($sucursal_relacionada); ?> </p><br><!-- Imprime Ubicacion-->         
-                           <a href="<?php echo get_permalink($trabajo->ID); ?>">Ver mas</a>
-                           <?php $emp =  get_the_title( $empresa_relacionada); ?>
-                           <!-- echo "<a href='$link' title='$linktitle'>$linkname</a>"; -->
+                           <p class="fa fa-map-marker">&nbsp;</p> <?php echo get_the_title ($sucursal_relacionada); ?>
+                           <!-- <p><?php echo get_the_title ($sucursal_relacionada); ?> </p><br>Imprime Ubicacion  -->
+                           </b><br> 
+                           <a style="text-decoration:none; color: black" href="<?php echo get_permalink($trabajo->ID); ?>">Ver más</a>
                                
                 </div>
 
@@ -136,10 +136,10 @@ $sucursal_relacionada = $sucursal_relacionada[0];
                     
                         <?php
                          
-                         $url = $_SERVER["HTTP_HOST"].'/sass-wp/bolsa-trabajos/?empresa='.$id; 
+                         $url = $_SERVER["HTTP_HOST"].'/proxima/bolsa-trabajos/?empresa='.$id; 
                          
                         ?>
-                        <a href="<?php echo "http://" . $host . $url; ?>">Ver todas las ofertas de trabajo para <?php echo get_the_title( $empresa_relacionada); ?> ></a>
+                        <a style="text-decoration:none; color:black" href="<?php echo "http://" .$url; ?>">Ver todas las ofertas de trabajo para <?php echo get_the_title( $empresa_relacionada); ?>➜</a>
                 </div>  
             </div>
         </div>    
@@ -157,7 +157,7 @@ $sucursal_relacionada = $sucursal_relacionada[0];
             <?php $nostros = get_page_by_title('nosotros');?>
 			<div class="swiper-wrapper">
 				<!-- Slides -->
-				<a href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://www.temporal.sumario.mx/proxima/wp-content/themes/proxima-theme/images/galeria-lapcit.png);padding: 40px 60px; background-size:cover;"></a>
+				<a  href="<?php echo get_permalink($nostros->ID) ?>" class="swiper-slide" style="background-image: url(https://www.temporal.sumario.mx/proxima/wp-content/themes/proxima-theme/images/galeria-lapcit.png);padding: 40px 60px; background-size:cover;"></a>
 			</div> 
 		</div>
         </div>

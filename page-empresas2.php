@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 <div class="row cuerpo" id="inicio" >
-
-    
 <div class="row seccion-nosotros">
             <div class="columns grande-1 medio-2 chico-12">
                 <span></span>
@@ -20,8 +18,8 @@
 
     	<div class="row seccion-empresa">
         <div class="cuadricula">
-            <div class="cuadro grande-1 medio-2 chico-12">
-                <span>Empresas</span>
+            <div class="cuadro grande-1 medio-2 chico-12 titulos">
+                <h5>Empresas</h5>
             </div>
 			
             <div class="cuadro medio-10 grande-11 chico-12 slider-home">
@@ -37,8 +35,7 @@
 				 			
 				            foreach ( $empresas as $empresa ):
 								$logo_empresa = get_the_post_thumbnail_url( $empresa->ID, 'logo_destacado_meta', true );
-                                
-                                                             
+                                                                 
 						?>
                             <div class="cuadro grande-6  chico-12 cuadro-trabajo logo-empresa2 wrap">
                                <a href="<?php echo get_permalink($empresa->ID); ?>"><img style="width: 450px;" src="<?php echo $logo_empresa; ?>"></a>
